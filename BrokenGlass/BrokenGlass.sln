@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrokenGlassWebApp", "BrokenGlassWebApp\BrokenGlassWebApp.csproj", "{CAF5A832-1CD1-4EB1-B0D7-7C763296E728}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrokenGlassTests", "BrokenGlassTests\BrokenGlassTests.csproj", "{ADFED73A-2EC7-4245-98DC-1A797AAB6BD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrokenGlassDomain", "BrokenGlassDomain\BrokenGlassDomain.csproj", "{F609D932-2910-45EF-8E9F-243C80A383FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAF5A832-1CD1-4EB1-B0D7-7C763296E728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF5A832-1CD1-4EB1-B0D7-7C763296E728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF5A832-1CD1-4EB1-B0D7-7C763296E728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF5A832-1CD1-4EB1-B0D7-7C763296E728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADFED73A-2EC7-4245-98DC-1A797AAB6BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADFED73A-2EC7-4245-98DC-1A797AAB6BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADFED73A-2EC7-4245-98DC-1A797AAB6BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADFED73A-2EC7-4245-98DC-1A797AAB6BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F609D932-2910-45EF-8E9F-243C80A383FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F609D932-2910-45EF-8E9F-243C80A383FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F609D932-2910-45EF-8E9F-243C80A383FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F609D932-2910-45EF-8E9F-243C80A383FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
