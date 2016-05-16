@@ -1,0 +1,7 @@
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\BrokenGlassDomain.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\BrokenGlassDomain.pdb
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\Ninject.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\Ninject.xml
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\obj\Debug\BrokenGlassDomain.csprojResolveAssemblyReference.cache
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\obj\Debug\BrokenGlassDomain.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\obj\Debug\BrokenGlassDomain.pdb

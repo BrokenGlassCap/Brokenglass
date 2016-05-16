@@ -1,0 +1,5 @@
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\BrokenGlassTests.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\BrokenGlassTests.pdb
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\obj\Debug\BrokenGlassTests.csprojResolveAssemblyReference.cache
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\obj\Debug\BrokenGlassTests.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\obj\Debug\BrokenGlassTests.pdb

@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
+using BrokenGlassWebApp.Infostracture;
 
 namespace BrokenGlassWebApp
 {
@@ -17,7 +18,8 @@ namespace BrokenGlassWebApp
             // Код, выполняемый при запуске приложения
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver());            
         }
     }
 }
