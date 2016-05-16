@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using BrokenGlassDomain.DataLayer;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace BrokenGlassWebApp.Infostracture
 
         private void AddBindings()
         {
-
+            m_kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }
 }

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BROKEN_GLASSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Adress">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OsbCode" Type="Int32" Nullable="false" />
+    <Property Name="OsbName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adress1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Longitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__AdressId__4AB81AF0" FromRole="Adress" ToRole="Claim" />
+  </EntityType>
+  <EntityType Name="Claim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceId" Type="Int32" Nullable="false" />
+    <Property Name="AdressId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ClaimStateId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Adress" Relationship="Self.FK__Claim__AdressId__4AB81AF0" FromRole="Claim" ToRole="Adress" />
+    <NavigationProperty Name="ClaimState" Relationship="Self.FK__Claim__ClaimStat__4CA06362" FromRole="Claim" ToRole="ClaimState" />
+    <NavigationProperty Name="Service" Relationship="Self.FK__Claim__ServiceId__49C3F6B7" FromRole="Claim" ToRole="Service" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Claim__UserId__4BAC3F29" FromRole="Claim" ToRole="User" />
+    <NavigationProperty Name="Photo" Relationship="Self.FK__Photo__ClaimId__4F7CD00D" FromRole="Claim" ToRole="Photo" />
+  </EntityType>
+  <EntityType Name="ClaimState">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__ClaimStat__4CA06362" FromRole="ClaimState" ToRole="Claim" />
+  </EntityType>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="FullPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ThumnailPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ClaimId" Type="Int32" Nullable="false" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Claim" Relationship="Self.FK__Photo__ClaimId__4F7CD00D" FromRole="Photo" ToRole="Claim" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Order" Type="Int32" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__ServiceId__49C3F6B7" FromRole="Service" ToRole="Claim" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__UserId__4BAC3F29" FromRole="User" ToRole="Claim" />
+  </EntityType>
+  <Association Name="FK__Claim__AdressId__4AB81AF0">
+    <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+    <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adress">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Claim">
+        <PropertyRef Name="AdressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Claim__ClaimStat__4CA06362">
+    <End Role="ClaimState" Type="Self.ClaimState" Multiplicity="1" />
+    <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClaimState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Claim">
+        <PropertyRef Name="ClaimStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Claim__ServiceId__49C3F6B7">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Claim">
+        <PropertyRef Name="ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Claim__UserId__4BAC3F29">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Claim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Photo__ClaimId__4F7CD00D">
+    <End Role="Claim" Type="Self.Claim" Multiplicity="1" />
+    <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Claim">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Photo">
+        <PropertyRef Name="ClaimId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BROKEN_GLASSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Adress" EntityType="Self.Adress" />
+    <EntitySet Name="Claim" EntityType="Self.Claim" />
+    <EntitySet Name="ClaimState" EntityType="Self.ClaimState" />
+    <EntitySet Name="Photo" EntityType="Self.Photo" />
+    <EntitySet Name="Service" EntityType="Self.Service" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK__Claim__AdressId__4AB81AF0" Association="Self.FK__Claim__AdressId__4AB81AF0">
+      <End Role="Adress" EntitySet="Adress" />
+      <End Role="Claim" EntitySet="Claim" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Claim__ClaimStat__4CA06362" Association="Self.FK__Claim__ClaimStat__4CA06362">
+      <End Role="ClaimState" EntitySet="ClaimState" />
+      <End Role="Claim" EntitySet="Claim" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Claim__ServiceId__49C3F6B7" Association="Self.FK__Claim__ServiceId__49C3F6B7">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Claim" EntitySet="Claim" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Claim__UserId__4BAC3F29" Association="Self.FK__Claim__UserId__4BAC3F29">
+      <End Role="User" EntitySet="User" />
+      <End Role="Claim" EntitySet="Claim" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Photo__ClaimId__4F7CD00D" Association="Self.FK__Photo__ClaimId__4F7CD00D">
+      <End Role="Claim" EntitySet="Claim" />
+      <End Role="Photo" EntitySet="Photo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -63,3 +63,8 @@ C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\bin\ru\Syst
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\obj\Debug\BrokenGlassWebApp.csprojResolveAssemblyReference.cache
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\obj\Debug\BrokenGlassWebApp.dll
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\obj\Debug\BrokenGlassWebApp.pdb
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\bin\BrokenGlassDomain.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\bin\EntityFramework.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\bin\BrokenGlassDomain.pdb
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\bin\EntityFramework.xml
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassWebApp\bin\ru\EntityFramework.resources.dll

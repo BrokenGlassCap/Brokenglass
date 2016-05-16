@@ -30,12 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,12 +55,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adress.cs">
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokenGlassEDM.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrokenGlassEDM.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokenGlassEDM.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BrokenGlassEDM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BrokenGlassEDM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Claim.cs">
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClaimState.cs">
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataLayer\GenericRepository.cs" />
+    <Compile Include="DataLayer\IRepository.cs" />
+    <Compile Include="DataLayer\IUnitOfWork.cs" />
+    <Compile Include="DataLayer\UnitOfWork.cs" />
+    <Compile Include="Photo.cs">
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.cs">
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceUtils\NinjectService.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="BrokenGlassEDM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BrokenGlassEDM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BrokenGlassEDM.edmx.diagram">
+      <DependentUpon>BrokenGlassEDM.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="BrokenGlassEDM.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BrokenGlassEDM.edmx</DependentUpon>
+      <LastGenOutput>BrokenGlassEDM.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BrokenGlassEDM.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BrokenGlassEDM.edmx</DependentUpon>
+      <LastGenOutput>BrokenGlassEDM.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

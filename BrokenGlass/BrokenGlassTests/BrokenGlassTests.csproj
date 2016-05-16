@@ -52,12 +52,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Domain\NinjectServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Domain\" />
     <Folder Include="WebApi\" />
     <Folder Include="WebUI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BrokenGlassDomain\BrokenGlassDomain.csproj">
+      <Project>{F609D932-2910-45EF-8E9F-243C80A383FC}</Project>
+      <Name>BrokenGlassDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -3,3 +3,10 @@ C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\Br
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\obj\Debug\BrokenGlassTests.csprojResolveAssemblyReference.cache
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\obj\Debug\BrokenGlassTests.dll
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\obj\Debug\BrokenGlassTests.pdb
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\BrokenGlassDomain.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\EntityFramework.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\BrokenGlassDomain.pdb
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\EntityFramework.xml
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\ru\EntityFramework.resources.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\Ninject.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassTests\bin\Debug\Ninject.xml

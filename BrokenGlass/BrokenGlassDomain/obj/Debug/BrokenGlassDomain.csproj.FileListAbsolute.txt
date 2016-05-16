@@ -5,3 +5,9 @@ C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\N
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\obj\Debug\BrokenGlassDomain.csprojResolveAssemblyReference.cache
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\obj\Debug\BrokenGlassDomain.dll
 C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\obj\Debug\BrokenGlassDomain.pdb
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\BrokenGlassDomain.dll.config
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\EntityFramework.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\EntityFramework.xml
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\bin\Debug\ru\EntityFramework.resources.dll
