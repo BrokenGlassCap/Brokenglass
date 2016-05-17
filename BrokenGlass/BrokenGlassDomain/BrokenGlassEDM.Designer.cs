@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Development\GitRepo\Brokenglass.git\BrokenGlass\BrokenGlassDomain\BrokenGlassEDM.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\BrokenGlassEDM.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

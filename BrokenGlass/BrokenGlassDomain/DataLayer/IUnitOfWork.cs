@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BrokenGlassDomain.DataLayer
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork: IDisposable
     {
-        GenericRepository<Adress> AdressRepository { get;}
-        GenericRepository<Claim> ClaimRepository { get;}
-        GenericRepository<ClaimState> ClaimStateRepository { get;}
-        GenericRepository<Photo> PhotoRepository { get;}
-        GenericRepository<Service> ServiceRepository { get;}
-        GenericRepository<User> UserRepository { get;}
+        IRepository<Adress> AdressRepository { get;}
+        IRepository<Claim> ClaimRepository { get;}
+        IRepository<ClaimState> ClaimStateRepository { get;}
+        IRepository<Photo> PhotoRepository { get;}
+        IRepository<Service> ServiceRepository { get;}
+        IRepository<User> UserRepository { get;}
         void Save();
     }
 }

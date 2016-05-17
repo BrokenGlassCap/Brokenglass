@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace BrokenGlassDomain.DataLayer
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
         private BROKEN_GLASSEntities m_context = new BROKEN_GLASSEntities();
 
-        GenericRepository<Adress> m_adress;
-        GenericRepository<Claim> m_claim;
-        GenericRepository<ClaimState> m_claimState;
-        GenericRepository<Photo> m_photo;
-        GenericRepository<Service> m_service;
-        GenericRepository<User> m_user;
+        IRepository<Adress> m_adress;
+        IRepository<Claim> m_claim;
+        IRepository<ClaimState> m_claimState;
+        IRepository<Photo> m_photo;
+        IRepository<Service> m_service;
+        IRepository<User> m_user;
 
-        public GenericRepository<Adress> AdressRepository
+        public IRepository<Adress> AdressRepository
         {
             get
             {
@@ -29,7 +29,7 @@ namespace BrokenGlassDomain.DataLayer
             }
         }
 
-        public GenericRepository<Claim> ClaimRepository
+        public IRepository<Claim> ClaimRepository
         {
             get
             {
@@ -41,7 +41,7 @@ namespace BrokenGlassDomain.DataLayer
             }
         }
 
-        public GenericRepository<ClaimState> ClaimStateRepository
+        public IRepository<ClaimState> ClaimStateRepository
         {
             get
             {
@@ -53,7 +53,7 @@ namespace BrokenGlassDomain.DataLayer
             }
         }
 
-        public GenericRepository<Photo> PhotoRepository
+        public IRepository<Photo> PhotoRepository
         {
             get
             {
@@ -65,7 +65,7 @@ namespace BrokenGlassDomain.DataLayer
             }
         }
 
-        public GenericRepository<Service> ServiceRepository
+        public IRepository<Service> ServiceRepository
         {
             get
             {
@@ -77,7 +77,7 @@ namespace BrokenGlassDomain.DataLayer
             }
         }
 
-        public GenericRepository<User> UserRepository
+        public IRepository<User> UserRepository
         {
             get
             {

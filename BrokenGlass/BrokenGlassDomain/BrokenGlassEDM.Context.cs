@@ -18,6 +18,7 @@ namespace BrokenGlassDomain
         public BROKEN_GLASSEntities()
             : base("name=BROKEN_GLASSEntities")
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
