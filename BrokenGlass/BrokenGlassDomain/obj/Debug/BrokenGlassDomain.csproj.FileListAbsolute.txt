@@ -25,3 +25,5 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\obj\Debug\Broken
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\obj\Debug\BrokenGlassDomain.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\obj\Debug\BrokenGlassDomain.pdb
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\bin\Debug\Newtonsoft.Json.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\bin\Debug\Newtonsoft.Json.xml

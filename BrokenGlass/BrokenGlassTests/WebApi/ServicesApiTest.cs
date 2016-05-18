@@ -10,22 +10,29 @@ using System.Web.Http;
 
 namespace BrokenGlassTests.WebApi
 {
-    /// <summary>
-    /// Сводное описание для ServicesApiTest
-    /// </summary>
+
     [TestClass]
     public class ServicesApiTest
     {
+        private Mock<IUnitOfWork> mockUnitOfWork;
+        private Mock<IRepository<Service>> mockGenricRepository;
+        private List<Service> allServices;
+        private TestContext testContextInstance;
         public ServicesApiTest()
         {
-            
-        }
-        private TestContext testContextInstance;
+            allServices = new List<Service>()
+                                {
+                                    new Service() {Id = 1, Code = "BANNANA" },
+                                    new Service() {Id = 2, Code = "ORANGE" }
+                                };
 
-        /// <summary>
-        ///Получает или устанавливает контекст теста, в котором предоставляются
-        ///сведения о текущем тестовом запуске и обеспечивается его функциональность.
-        ///</summary>
+            mockUnitOfWork = new Mock<IUnitOfWork>();
+            mockGenricRepository = new Mock<IRepository<Service>>();
+
+            mockGenricRepository.Setup(p => p.GetAll()).Returns(() => allServices);
+            mockUnitOfWork.Setup(p => p.ServiceRepository).Returns(() => mockGenricRepository.Object);
+        }
+
         public TestContext TestContext
         {
             get
@@ -65,24 +72,43 @@ namespace BrokenGlassTests.WebApi
         [TestMethod]
         public void GetAllServices()
         {
-            var allServices = new List<Service>()
-                    {
-                        new Service() {Id = 1 },
-                        new Service() {Id = 2 }
-                    };
-
-            var mockUnitOfWork = new Mock<IUnitOfWork>();
-            var mockGenricRepository = new Mock<IRepository<Service>>();
-            mockGenricRepository.Setup(p => p.GetAll()).Returns(() => allServices);
-            mockUnitOfWork.Setup(p => p.ServiceRepository).Returns(() => mockGenricRepository.Object);
-            var controller = new ServicesController();
-            controller.SetDbContext(mockUnitOfWork.Object);
+            
+            var controller = new ServicesController(mockUnitOfWork.Object);
 
             var result = controller.Get();
 
             mockUnitOfWork.Verify(v => v.ServiceRepository,Times.Once);
             mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
             Assert.AreSame(result, allServices);
+        }
+
+        [TestMethod]
+        public void GetServiceByCode()
+        {
+            string queryCode = "ORANGE";
+            var controller = new ServicesController(mockUnitOfWork.Object);
+
+            var result = controller.Get(queryCode);
+
+            mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
+            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result, allServices.Find(m => m.Code == queryCode));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpResponseException))]
+        public void GetServiceByWrongCodeAndExpectException()
+        {
+            string queryCode = "WrongCode";
+            var controller = new ServicesController(mockUnitOfWork.Object);
+
+            var result = controller.Get(queryCode);
+
+            mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
+            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+
         }
     }
 }

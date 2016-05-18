@@ -18,7 +18,7 @@ namespace BrokenGlassWebApp.Controllers.api
             m_dbRepositories = NinjectService.Instance.GetService<IUnitOfWork>();
         }
 
-        public void SetDbContext(IUnitOfWork dbContext)
+        public ServicesController(IUnitOfWork dbContext)
         {
             m_dbRepositories = dbContext;
         }
@@ -26,6 +26,17 @@ namespace BrokenGlassWebApp.Controllers.api
         public IEnumerable<Service> Get()
         {
             return m_dbRepositories.ServiceRepository.GetAll();
+        }
+
+        public Service Get(string code)
+        {
+            var service = m_dbRepositories.ServiceRepository.GetAll()
+                .FirstOrDefault(f => f.Code == code);
+            if (service == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return service;
         }
 
         protected override void Dispose(bool disposing)
