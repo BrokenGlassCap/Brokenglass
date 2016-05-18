@@ -25,12 +25,6 @@ namespace BrokenGlassWebApp.Controllers.api
 
         public IEnumerable<Service> Get()
         {
-            ApplicationLogger.Instance.Info("Info");
-            ApplicationLogger.Instance.Error("Error");
-            ApplicationLogger.Instance.Trace("Trace");
-            ApplicationLogger.Instance.Warn("Warn");
-            ApplicationLogger.Instance.Fatal("Fatal");
-            ApplicationLogger.Instance.Debug("Debug");
             return m_dbRepositories.ServiceRepository.GetAll();
         }
 
@@ -40,6 +34,19 @@ namespace BrokenGlassWebApp.Controllers.api
                 .FirstOrDefault(f => f.Code == code);
             if (service == null)
             {
+                ApplicationLogger.Instance.Trace(string.Format("Service/GET: request had requested Service object with non-existen Code."));
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return service;
+        }
+
+        public Service Get(int id)
+        {
+            var service = m_dbRepositories.ServiceRepository.GetAll()
+                .FirstOrDefault(f => f.Id == id);
+            if (service == null)
+            {
+                ApplicationLogger.Instance.Trace(string.Format("Service/GET: request had requested Service object with non-existen Id."));
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             return service;

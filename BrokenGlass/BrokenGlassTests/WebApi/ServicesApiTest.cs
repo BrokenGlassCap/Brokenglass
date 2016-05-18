@@ -110,5 +110,34 @@ namespace BrokenGlassTests.WebApi
             mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
 
         }
+
+        [TestMethod]
+        public void GetServiceById()
+        {
+            int id = 1;
+            var controller = new ServicesController(mockUnitOfWork.Object);
+
+            var result = controller.Get(id);
+
+            mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
+            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result, allServices.Find(m => m.Id == id));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpResponseException))]
+        public void GetServiceByWrongIdAndExpectException()
+        {
+            int id = -9999;
+            var controller = new ServicesController(mockUnitOfWork.Object);
+
+            var result = controller.Get(id);
+
+            mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
+            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+
+        }
     }
 }

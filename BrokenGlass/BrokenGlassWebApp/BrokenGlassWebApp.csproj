@@ -184,7 +184,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\ClaimStatesController.cs" />
     <Compile Include="Controllers\api\ServicesController.cs" />
+    <Compile Include="Controllers\ClaimStatesDataController.cs" />
     <Compile Include="Controllers\ServicesDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,6 +209,11 @@
     <Content Include="Views\ServicesData\Edit.cshtml" />
     <Content Include="Views\ServicesData\Index.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\ClaimStatesData\Create.cshtml" />
+    <Content Include="Views\ClaimStatesData\Delete.cshtml" />
+    <Content Include="Views\ClaimStatesData\Details.cshtml" />
+    <Content Include="Views\ClaimStatesData\Edit.cshtml" />
+    <Content Include="Views\ClaimStatesData\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

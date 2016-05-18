@@ -69,3 +69,6 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\ru\Syst
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\ru\System.Web.WebPages.resources.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\ru\System.Web.WebPages.Deployment.resources.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\BrokenGlassTests.dll.config
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\NLog.config
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\NLog.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\NLog.xml
