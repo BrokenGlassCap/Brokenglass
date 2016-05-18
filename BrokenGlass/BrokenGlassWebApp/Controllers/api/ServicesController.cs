@@ -25,6 +25,12 @@ namespace BrokenGlassWebApp.Controllers.api
 
         public IEnumerable<Service> Get()
         {
+            ApplicationLogger.Instance.Info("Info");
+            ApplicationLogger.Instance.Error("Error");
+            ApplicationLogger.Instance.Trace("Trace");
+            ApplicationLogger.Instance.Warn("Warn");
+            ApplicationLogger.Instance.Fatal("Fatal");
+            ApplicationLogger.Instance.Debug("Debug");
             return m_dbRepositories.ServiceRepository.GetAll();
         }
 
