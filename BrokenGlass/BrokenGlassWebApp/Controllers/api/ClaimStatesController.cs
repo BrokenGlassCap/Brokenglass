@@ -51,6 +51,19 @@ namespace BrokenGlassWebApp.Controllers.api
             return claimState;
         }
 
+        public IEnumerable<ClaimState> Get(DateTime lastUpdateDate)
+        {
+            var claimStates = db.ClaimStateRepository.GetAll()
+                .Where(f => f.UpdateAt >= lastUpdateDate);
+
+            if (claimStates.Count() == 0)
+            {
+                throw new HttpResponseException(HttpStatusCode.NoContent);
+            }
+
+            return claimStates;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

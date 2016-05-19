@@ -10,109 +10,109 @@ using BrokenGlassDomain;
 
 namespace BrokenGlassWebApp.Controllers
 {
-    public class ClaimStatesDataController : Controller
+    public class AdressesDataController : Controller
     {
         private BROKEN_GLASSEntities db = new BROKEN_GLASSEntities();
 
-        // GET: ClaimStatesData
+        // GET: AdressesData
         public ActionResult Index()
         {
-            return View(db.ClaimState.ToList());
+            return View(db.Adress.ToList());
         }
 
-        // GET: ClaimStatesData/Details/5
+        // GET: AdressesData/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClaimState claimState = db.ClaimState.Find(id);
-            if (claimState == null)
+            Adress adress = db.Adress.Find(id);
+            if (adress == null)
             {
                 return HttpNotFound();
             }
-            return View(claimState);
+            return View(adress);
         }
 
-        // GET: ClaimStatesData/Create
+        // GET: AdressesData/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ClaimStatesData/Create
+        // POST: AdressesData/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Code,Name,UpdateAt,UpdateBy")] ClaimState claimState)
+        public ActionResult Create([Bind(Include = "Id,OsbCode,OsbName,City,Adress1,Location,Latitude,Longitude,UpdateAt,UpdateBy")] Adress adress)
         {
             if (ModelState.IsValid)
             {
-                claimState.UpdateAt = DateTime.UtcNow;
-                db.ClaimState.Add(claimState);
+                adress.UpdateAt = DateTime.UtcNow;
+                db.Adress.Add(adress);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(claimState);
+            return View(adress);
         }
 
-        // GET: ClaimStatesData/Edit/5
+        // GET: AdressesData/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClaimState claimState = db.ClaimState.Find(id);
-            if (claimState == null)
+            Adress adress = db.Adress.Find(id);
+            if (adress == null)
             {
                 return HttpNotFound();
             }
-            return View(claimState);
+            return View(adress);
         }
 
-        // POST: ClaimStatesData/Edit/5
+        // POST: AdressesData/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Code,Name,UpdateAt,UpdateBy")] ClaimState claimState)
+        public ActionResult Edit([Bind(Include = "Id,OsbCode,OsbName,City,Adress1,Location,Latitude,Longitude,UpdateAt,UpdateBy")] Adress adress)
         {
             if (ModelState.IsValid)
             {
-                claimState.UpdateAt = DateTime.UtcNow;
-                db.Entry(claimState).State = EntityState.Modified;
+                adress.UpdateAt = DateTime.UtcNow;
+                db.Entry(adress).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(claimState);
+            return View(adress);
         }
 
-        // GET: ClaimStatesData/Delete/5
+        // GET: AdressesData/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ClaimState claimState = db.ClaimState.Find(id);
-            if (claimState == null)
+            Adress adress = db.Adress.Find(id);
+            if (adress == null)
             {
                 return HttpNotFound();
             }
-            return View(claimState);
+            return View(adress);
         }
 
-        // POST: ClaimStatesData/Delete/5
+        // POST: AdressesData/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ClaimState claimState = db.ClaimState.Find(id);
-            db.ClaimState.Remove(claimState);
+            Adress adress = db.Adress.Find(id);
+            db.Adress.Remove(adress);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

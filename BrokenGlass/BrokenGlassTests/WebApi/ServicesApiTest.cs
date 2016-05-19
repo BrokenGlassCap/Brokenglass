@@ -22,8 +22,11 @@ namespace BrokenGlassTests.WebApi
         {
             allServices = new List<Service>()
                                 {
-                                    new Service() {Id = 1, Code = "BANNANA" },
-                                    new Service() {Id = 2, Code = "ORANGE" }
+                                    new Service() {Id = 1, Code = "BANNANA", UpdateAt = DateTime.Now.AddDays(1)},
+                                    new Service() {Id = 2, Code = "ORANGE", UpdateAt = DateTime.Now.AddDays(-2) },
+                                    new Service() {Id = 2, Code = "APPLE", UpdateAt = DateTime.Now.AddDays(-3) },
+                                    new Service() {Id = 2, Code = "PEACHE", UpdateAt = DateTime.Now.AddDays(-4) },
+                                    new Service() {Id = 2, Code = "GREIPFRUIT", UpdateAt = DateTime.Now.AddDays(2)}
                                 };
 
             mockUnitOfWork = new Mock<IUnitOfWork>();
@@ -139,5 +142,33 @@ namespace BrokenGlassTests.WebApi
             mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
 
         }
+
+        [TestMethod]
+        public void GetUpdatingServicesByLastUpdateDate()
+        {
+            DateTime lastUpdateDate = DateTime.Now;
+            var actualObject = allServices.FindAll(f => f.UpdateAt >= lastUpdateDate);
+            var controllerServices = new ServicesController(mockUnitOfWork.Object);
+
+            var expectedObject = controllerServices.Get(lastUpdateDate);
+
+            Assert.IsNotNull(expectedObject);
+
+            AssertUtils.IEnumerableAreEqual(expectedObject, actualObject);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpResponseException))]
+        public void GetUpdatingServicesByLastUpdateDateExpectException()
+        {
+            DateTime lastUpdateDate = DateTime.Now.AddDays(22);
+            var actualObject = allServices.FindAll(f => f.UpdateAt >= lastUpdateDate);
+            var controllerServices = new ServicesController(mockUnitOfWork.Object);
+
+            var expectedObject = controllerServices.Get(lastUpdateDate);
+
+        }
+
     }
 }

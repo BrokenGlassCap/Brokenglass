@@ -19,7 +19,11 @@ namespace BrokenGlassWebApp
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            DependencyResolver.SetResolver(new NinjectDependencyResolver());            
+            DependencyResolver.SetResolver(new NinjectDependencyResolver());
+            HttpConfiguration config = GlobalConfiguration.Configuration;
+            config.Formatters.JsonFormatter
+                        .SerializerSettings
+                        .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }

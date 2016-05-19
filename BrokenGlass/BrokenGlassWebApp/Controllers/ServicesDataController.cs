@@ -50,7 +50,7 @@ namespace BrokenGlassWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                service.UpdateAt = DateTime.Now;
+                service.UpdateAt = DateTime.UtcNow;
                 db.Service.Add(service);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,7 +83,7 @@ namespace BrokenGlassWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                service.UpdateAt = DateTime.Now;
+                service.UpdateAt = DateTime.UtcNow;
                 db.Entry(service).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

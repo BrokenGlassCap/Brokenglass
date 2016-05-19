@@ -22,10 +22,10 @@ namespace BrokenGlassTests.WebApi
         {
             stateCollection = new List<ClaimState>()
                                 {
-                                    new ClaimState() {Id = 1, Code = "STATE_NEW", },
-                                    new ClaimState() {Id = 2, Code = "STATE_SENT" },
-                                    new ClaimState() {Id = 3, Code = "STATE_WORKING" },
-                                    new ClaimState() {Id = 2, Code = "STATE_COMPLETED" }
+                                    new ClaimState() {Id = 1, Code = "STATE_NEW", UpdateAt = DateTime.Now.AddDays(1) },
+                                    new ClaimState() {Id = 2, Code = "STATE_SENT", UpdateAt = DateTime.Now.AddDays(-11) },
+                                    new ClaimState() {Id = 3, Code = "STATE_WORKING", UpdateAt = DateTime.Now.AddDays(2) },
+                                    new ClaimState() {Id = 2, Code = "STATE_COMPLETED", UpdateAt = DateTime.Now.AddDays(0) }
                                 };
 
             mockUnitOfWork = new Mock<IUnitOfWork>();
@@ -127,6 +127,33 @@ namespace BrokenGlassTests.WebApi
             var controllerClaimStates = new ClaimStatesController(mockUnitOfWork.Object);
 
             var result = controllerClaimStates.Get(id);
+
+        }
+
+        [TestMethod]
+        public void GetUpdatingClaimStateByLastUpdateDate()
+        {
+            DateTime lastUpdateDate = DateTime.Now;
+            var actualObject = stateCollection.FindAll(f => f.UpdateAt >= lastUpdateDate);
+            var controllerServices = new ClaimStatesController(mockUnitOfWork.Object);
+
+            var expectedObject = controllerServices.Get(lastUpdateDate);
+
+            Assert.IsNotNull(expectedObject);
+
+            AssertUtils.IEnumerableAreEqual(expectedObject, actualObject);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpResponseException))]
+        public void GetUpdatingClaimStateByLastUpdateDateExpectException()
+        {
+            DateTime lastUpdateDate = DateTime.Now.AddDays(22);
+            var actualObject = stateCollection.FindAll(f => f.UpdateAt >= lastUpdateDate);
+            var controllerServices = new ClaimStatesController(mockUnitOfWork.Object);
+
+            var expectedObject = controllerServices.Get(lastUpdateDate);
 
         }
     }

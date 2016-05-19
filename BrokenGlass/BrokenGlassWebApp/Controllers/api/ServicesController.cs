@@ -52,6 +52,20 @@ namespace BrokenGlassWebApp.Controllers.api
             return service;
         }
 
+        public IEnumerable<Service> Get(DateTime lastUpdateDate)
+        {
+            var service = m_dbRepositories.ServiceRepository.GetAll()
+                .Where(f => f.UpdateAt >= lastUpdateDate);
+
+            if (service.Count() == 0)
+            {
+                throw new HttpResponseException(HttpStatusCode.NoContent);
+            }
+           
+            return service;
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
