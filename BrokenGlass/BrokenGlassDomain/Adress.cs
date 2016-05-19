@@ -24,7 +24,7 @@ namespace BrokenGlassDomain
         public int OsbCode { get; set; }
         public string OsbName { get; set; }
         public string City { get; set; }
-        public string Adress1 { get; set; }
+        public string AdressName { get; set; }
         public string Location { get; set; }
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }

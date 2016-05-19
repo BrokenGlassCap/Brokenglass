@@ -76,7 +76,7 @@ namespace BrokenGlassDomain
             [DataMember]
             public string City { get; set; }
             [DataMember]
-            public string Adress1 { get; set; }
+            public string AdressName { get; set; }
             [DataMember]
             public string Location { get; set; }
             [DataMember]

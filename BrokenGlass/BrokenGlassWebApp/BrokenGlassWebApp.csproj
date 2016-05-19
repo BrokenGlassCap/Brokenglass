@@ -186,6 +186,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdressesDataController.cs" />
     <Compile Include="Controllers\api\AdressesController.cs" />
+    <Compile Include="Controllers\api\ClaimsController.cs" />
     <Compile Include="Controllers\api\ClaimStatesController.cs" />
     <Compile Include="Controllers\api\ServicesController.cs" />
     <Compile Include="Controllers\ClaimStatesDataController.cs" />

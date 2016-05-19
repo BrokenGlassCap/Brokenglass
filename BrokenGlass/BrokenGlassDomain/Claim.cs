@@ -26,6 +26,10 @@ namespace BrokenGlassDomain
         public int UserId { get; set; }
         public int ClaimStateId { get; set; }
         public string Description { get; set; }
+        public string Solution { get; set; }
+        public System.DateTime CreateAt { get; set; }
+        public Nullable<System.DateTime> UpdateAt { get; set; }
+        public string UpdateBy { get; set; }
     
         public virtual Adress Adress { get; set; }
         public virtual ClaimState ClaimState { get; set; }

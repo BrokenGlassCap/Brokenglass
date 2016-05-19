@@ -71,6 +71,7 @@
     <Compile Include="Domain\NinjectServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebApi\AdressesApiTest.cs" />
+    <Compile Include="WebApi\ClaimsApiTest.cs" />
     <Compile Include="WebApi\ServicesApiTest.cs" />
     <Compile Include="WebApi\StateClaimTest.cs" />
   </ItemGroup>

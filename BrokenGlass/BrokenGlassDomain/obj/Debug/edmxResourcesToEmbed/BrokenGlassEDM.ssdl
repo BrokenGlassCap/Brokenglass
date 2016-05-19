@@ -8,7 +8,7 @@
     <Property Name="OsbCode" Type="int" Nullable="false" />
     <Property Name="OsbName" Type="nvarchar" MaxLength="200" />
     <Property Name="City" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="Adress" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="AdressName" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Location" Type="nvarchar" MaxLength="200" />
     <Property Name="Latitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Longitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -25,6 +25,10 @@
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="ClaimStateId" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Solution" Type="nvarchar(max)" />
+    <Property Name="CreateAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdateAt" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="ClaimState">
     <Key>
@@ -118,7 +122,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Photo__ClaimId__4F7CD00D">
+  <Association Name="FK__Photo__ClaimId__73BA3083">
     <End Role="Claim" Type="Self.Claim" Multiplicity="1" />
     <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -153,7 +157,7 @@
       <End Role="User" EntitySet="User" />
       <End Role="Claim" EntitySet="Claim" />
     </AssociationSet>
-    <AssociationSet Name="FK__Photo__ClaimId__4F7CD00D" Association="Self.FK__Photo__ClaimId__4F7CD00D">
+    <AssociationSet Name="FK__Photo__ClaimId__73BA3083" Association="Self.FK__Photo__ClaimId__73BA3083">
       <End Role="Claim" EntitySet="Claim" />
       <End Role="Photo" EntitySet="Photo" />
     </AssociationSet>

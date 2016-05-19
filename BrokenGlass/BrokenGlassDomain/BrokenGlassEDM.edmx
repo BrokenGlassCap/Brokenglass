@@ -13,7 +13,7 @@
           <Property Name="OsbCode" Type="int" Nullable="false" />
           <Property Name="OsbName" Type="nvarchar" MaxLength="200" />
           <Property Name="City" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Adress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="AdressName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Location" Type="nvarchar" MaxLength="200" />
           <Property Name="Latitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Longitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -30,6 +30,10 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ClaimStateId" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Solution" Type="nvarchar(max)" />
+          <Property Name="CreateAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="ClaimState">
           <Key>
@@ -123,7 +127,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Photo__ClaimId__4F7CD00D">
+        <Association Name="FK__Photo__ClaimId__73BA3083">
           <End Role="Claim" Type="Self.Claim" Multiplicity="1" />
           <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,7 +162,7 @@
             <End Role="User" EntitySet="User" />
             <End Role="Claim" EntitySet="Claim" />
           </AssociationSet>
-          <AssociationSet Name="FK__Photo__ClaimId__4F7CD00D" Association="Self.FK__Photo__ClaimId__4F7CD00D">
+          <AssociationSet Name="FK__Photo__ClaimId__73BA3083" Association="Self.FK__Photo__ClaimId__73BA3083">
             <End Role="Claim" EntitySet="Claim" />
             <End Role="Photo" EntitySet="Photo" />
           </AssociationSet>
@@ -175,7 +179,7 @@
           <Property Name="OsbCode" Type="Int32" Nullable="false" />
           <Property Name="OsbName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Adress1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdressName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Latitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Longitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
@@ -198,6 +202,10 @@
           <NavigationProperty Name="Service" Relationship="Self.FK__Claim__ServiceId__49C3F6B7" FromRole="Claim" ToRole="Service" />
           <NavigationProperty Name="User" Relationship="Self.FK__Claim__UserId__4BAC3F29" FromRole="Claim" ToRole="User" />
           <NavigationProperty Name="Photo" Relationship="Self.FK__Photo__ClaimId__4F7CD00D" FromRole="Claim" ToRole="Photo" />
+          <Property Name="Solution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ClaimState">
           <Key>
@@ -344,11 +352,11 @@
           <EntitySetMapping Name="Adress">
             <EntityTypeMapping TypeName="BROKEN_GLASSModel.Adress">
               <MappingFragment StoreEntitySet="Adress">
+                <ScalarProperty Name="AdressName" ColumnName="AdressName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OsbCode" ColumnName="OsbCode" />
                 <ScalarProperty Name="OsbName" ColumnName="OsbName" />
                 <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Adress1" ColumnName="Adress" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
@@ -360,6 +368,10 @@
           <EntitySetMapping Name="Claim">
             <EntityTypeMapping TypeName="BROKEN_GLASSModel.Claim">
               <MappingFragment StoreEntitySet="Claim">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+                <ScalarProperty Name="Solution" ColumnName="Solution" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
                 <ScalarProperty Name="AdressId" ColumnName="AdressId" />

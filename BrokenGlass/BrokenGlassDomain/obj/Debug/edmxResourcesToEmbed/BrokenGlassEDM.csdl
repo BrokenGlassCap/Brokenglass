@@ -8,7 +8,7 @@
     <Property Name="OsbCode" Type="Int32" Nullable="false" />
     <Property Name="OsbName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Adress1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AdressName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Latitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="Longitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
@@ -31,6 +31,10 @@
     <NavigationProperty Name="Service" Relationship="Self.FK__Claim__ServiceId__49C3F6B7" FromRole="Claim" ToRole="Service" />
     <NavigationProperty Name="User" Relationship="Self.FK__Claim__UserId__4BAC3F29" FromRole="Claim" ToRole="User" />
     <NavigationProperty Name="Photo" Relationship="Self.FK__Photo__ClaimId__4F7CD00D" FromRole="Claim" ToRole="Photo" />
+    <Property Name="Solution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ClaimState">
     <Key>

@@ -25,3 +25,16 @@
 2016-05-19 14:47:43.1109 TRACE ClaimState/GET: request had requested ClaimState object with non-existen Code.
 2016-05-19 14:47:43.1109 TRACE ClaimState/GET: request had requested ClaimState object with non-existen ID.
 2016-05-19 14:47:43.4189 TRACE Adress/GET: request had requested Adress object with non-existen Id.
+2016-05-19 15:29:34.5606 TRACE Service/GET: request had requested Service object with non-existen Code.
+2016-05-19 15:29:34.5836 TRACE Service/GET: request had requested Service object with non-existen Id.
+2016-05-19 15:29:34.6036 TRACE ClaimState/GET: request had requested ClaimState object with non-existen Code.
+2016-05-19 15:29:34.6156 TRACE ClaimState/GET: request had requested ClaimState object with non-existen ID.
+2016-05-19 15:29:34.9106 TRACE Adress/GET: request had requested Adress object with non-existen Id.
+2016-05-19 17:00:21.4461 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-19 17:00:30.1716 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-19 17:00:40.6982 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-19 17:01:38.1535 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-19 17:01:52.9873 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-19 17:02:38.1479 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-19 17:02:57.2590 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-19 17:04:21.2488 TRACE Claims/GET: request had requested Claims object with non-existen UserId.

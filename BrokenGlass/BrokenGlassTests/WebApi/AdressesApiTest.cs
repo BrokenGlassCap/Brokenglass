@@ -27,11 +27,11 @@ namespace BrokenGlassTests.WebApi
             {
                 allAdresses = new List<Adress>()
                                 {
-                                    new Adress() {Id = 1, Adress1 = "BANNANA", UpdateAt = DateTime.Now.AddDays(1)},
-                                    new Adress() {Id = 2, Adress1 = "ORANGE", UpdateAt = DateTime.Now.AddDays(-2) },
-                                    new Adress() {Id = 2, Adress1 = "APPLE", UpdateAt = DateTime.Now.AddDays(-3) },
-                                    new Adress() {Id = 2, Adress1 = "PEACHE", UpdateAt = DateTime.Now.AddDays(-4) },
-                                    new Adress() {Id = 2, Adress1 = "GREIPFRUIT", UpdateAt = DateTime.Now.AddDays(2)}
+                                    new Adress() {Id = 1, AdressName = "BANNANA", UpdateAt = DateTime.Now.AddDays(1)},
+                                    new Adress() {Id = 2, AdressName = "ORANGE", UpdateAt = DateTime.Now.AddDays(-2) },
+                                    new Adress() {Id = 2, AdressName = "APPLE", UpdateAt = DateTime.Now.AddDays(-3) },
+                                    new Adress() {Id = 2, AdressName = "PEACHE", UpdateAt = DateTime.Now.AddDays(-4) },
+                                    new Adress() {Id = 2, AdressName = "GREIPFRUIT", UpdateAt = DateTime.Now.AddDays(2)}
                                 };
 
                 mockUnitOfWork = new Mock<IUnitOfWork>();
