@@ -191,6 +191,7 @@
     <Compile Include="Controllers\api\ServicesController.cs" />
     <Compile Include="Controllers\ClaimStatesDataController.cs" />
     <Compile Include="Controllers\ServicesDataController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,6 +223,7 @@
     <Content Include="Views\AdressesData\Details.cshtml" />
     <Content Include="Views\AdressesData\Edit.cshtml" />
     <Content Include="Views\AdressesData\Index.cshtml" />
+    <Content Include="Views\Test\UploadClaimFile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

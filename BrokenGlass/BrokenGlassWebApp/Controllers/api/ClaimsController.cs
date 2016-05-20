@@ -34,5 +34,25 @@ namespace BrokenGlassWebApp.Controllers.api
 
             return claims;
         }
+
+        public IEnumerable<Claim> Get(string userEmail)
+        {
+
+            var user = m_db.UserRepository.GetAll().FirstOrDefault(f => f.Email == userEmail);
+            if (user == null)
+            {
+                ApplicationLogger.Instance.Trace(string.Format("Claims/GET: User was not found with specified Email: {0}",userEmail));
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            if (user.Claim.Count() == 0)
+            {
+                ApplicationLogger.Instance.Trace(string.Format("Claims/GET: request not have result like a Claims object with specified UserEmail."));
+                throw new HttpResponseException(HttpStatusCode.NoContent);
+            }
+
+            user.Claim.ToList().ForEach(p => p.Photo.Clear());
+            return user.Claim;
+        }
     }
 }

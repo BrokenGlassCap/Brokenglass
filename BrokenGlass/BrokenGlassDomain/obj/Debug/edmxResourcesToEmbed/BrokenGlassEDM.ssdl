@@ -44,7 +44,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FullPic" Type="varbinary(max)" />
     <Property Name="ThumnailPic" Type="varbinary(max)" />
     <Property Name="ClaimId" Type="int" Nullable="false" />

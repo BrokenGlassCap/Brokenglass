@@ -1,0 +1,2 @@
+2016-05-20 11:29:27.8996 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-20 12:52:22.3340 TRACE Claims/GET: User was not found with specified Email: Test
