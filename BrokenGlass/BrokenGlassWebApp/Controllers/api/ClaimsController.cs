@@ -54,5 +54,36 @@ namespace BrokenGlassWebApp.Controllers.api
             user.Claim.ToList().ForEach(p => p.Photo.Clear());
             return user.Claim;
         }
+
+        public Claim GetClaimById(int id)
+        {
+            var claim = m_db.ClaimRepository.GetById(id);
+            if (claim == null)
+            {
+                ApplicationLogger.Instance.Trace(string.Format("Claims/GET: Claim was not found with specified ID: {0}", id));
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            return claim;
+
+        }
+        [HttpPost]
+        public HttpResponseMessage PostClaim(Claim claim)
+        {
+            try
+            {
+                m_db.ClaimRepository.Insert(claim);
+                m_db.Save();
+            }
+            catch (Exception ex)
+            {
+                ApplicationLogger.Instance.Trace(string.Format("Claims/POST: Claim didnt created: {0} {1}", ex.Message, ex.StackTrace));
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            claim.Photo.Clear();
+            var httpResponse = Request.CreateResponse<Claim>(HttpStatusCode.Created, claim);
+            return httpResponse;
+        }
     }
 }

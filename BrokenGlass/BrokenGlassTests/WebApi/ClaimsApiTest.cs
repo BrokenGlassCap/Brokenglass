@@ -61,6 +61,7 @@ namespace BrokenGlassTests.WebApi
 
             mockUsersRepository.Setup(m => m.GetAll()).Returns(() => stubUsers);
             mockGenricRepository.Setup(p => p.GetAll()).Returns(() => stubClaims);
+            mockGenricRepository.Setup(p => p.GetById(It.IsAny<int>())).Returns<int>( s => { return stubClaims.Find(f => f.Id == s); });
             mockUnitOfWork.Setup(p => p.ClaimRepository).Returns(() => mockGenricRepository.Object);
             mockUnitOfWork.Setup(p => p.UserRepository).Returns(()=> mockUsersRepository.Object);
         }
@@ -155,16 +156,58 @@ namespace BrokenGlassTests.WebApi
             Assert.AreEqual(enumeratroObject.Current.Photo.Count,0);
         }
 
+        //[TestMethod]
+        //public void GetClaimsByWrongUserEmailExpecteExceptionCheckCodeResult()
+        //{
+        //    var userEmail = "UserTest@mail.ru";
+        //    var claimController = new ClaimsController(mockUnitOfWork.Object);
+
+        //    TestUtils.SetApiControllerContextAndRequest(claimController, $"http:/localhost/api/Claims?userEmail={userEmail}");
+
+        //    var expectedObject = claimController.Get(userEmail);
+        //    AssertUtils.IEnumerableAreEqual(expectedObject, stubUsers.Find(f => f.Email == userEmail).Claim);
+        //}
+
         [TestMethod]
-        public void GetClaimsByWrongUserEmailExpecteExceptionCheckCodeResult()
+        public void GetClaimById()
         {
-            var userEmail = "UserTest@mail.ru";
-            var claimController = new ClaimsController(mockUnitOfWork.Object);
+            var claimId = 1;
+            var controller = new ClaimsController(mockUnitOfWork.Object);
 
-            TestUtils.SetApiControllerContextAndRequest(claimController, $"http:/localhost/api/Claims?userEmail={userEmail}");
+            var expectedObject = controller.GetClaimById(claimId);
 
-            var expectedObject = claimController.Get(userEmail);
-            AssertUtils.IEnumerableAreEqual(expectedObject, stubUsers.Find(f => f.Email == userEmail).Claim);
+            Assert.AreEqual(expectedObject, stubClaims.Find(f => f.Id == claimId));
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpResponseException))]
+        public void GetClaimByIdExpectedException()
+        {
+            var claimId = -1;
+            var controller = new ClaimsController(mockUnitOfWork.Object);
+
+            var expectedObject = controller.GetClaimById(claimId);
+        }
+
+        [TestMethod]
+        public void PostClaim()
+        {
+            var controller = new ClaimsController(mockUnitOfWork.Object);
+            var claim = new Claim()
+            {
+                Id = 10,
+                AdressId = 1,
+                ClaimStateId = 1,
+                ServiceId = 1,
+                CreateAt = DateTime.Now,
+                UserId = 1,
+                Photo = new List<Photo>() { new Photo() { ClaimId = 10, UpdateAt = DateTime.UtcNow } }
+            };
+            TestUtils.SetApiControllerContextAndRequest(controller, "http://localhost/api/Claims");
+            var expectedObject = controller.PostClaim(claim);
+
+            Assert.IsTrue(stubClaims.Exists(c => c.Id == claim.Id));
         }
 
 
