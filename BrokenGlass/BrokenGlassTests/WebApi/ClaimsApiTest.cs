@@ -61,6 +61,7 @@ namespace BrokenGlassTests.WebApi
 
             mockUsersRepository.Setup(m => m.GetAll()).Returns(() => stubUsers);
             mockGenricRepository.Setup(p => p.GetAll()).Returns(() => stubClaims);
+            mockGenricRepository.Setup(p => p.Insert(It.IsAny<Claim>())).Callback((Claim claim) => { stubClaims.Add(claim); });
             mockGenricRepository.Setup(p => p.GetById(It.IsAny<int>())).Returns<int>( s => { return stubClaims.Find(f => f.Id == s); });
             mockUnitOfWork.Setup(p => p.ClaimRepository).Returns(() => mockGenricRepository.Object);
             mockUnitOfWork.Setup(p => p.UserRepository).Returns(()=> mockUsersRepository.Object);
@@ -156,18 +157,6 @@ namespace BrokenGlassTests.WebApi
             Assert.AreEqual(enumeratroObject.Current.Photo.Count,0);
         }
 
-        //[TestMethod]
-        //public void GetClaimsByWrongUserEmailExpecteExceptionCheckCodeResult()
-        //{
-        //    var userEmail = "UserTest@mail.ru";
-        //    var claimController = new ClaimsController(mockUnitOfWork.Object);
-
-        //    TestUtils.SetApiControllerContextAndRequest(claimController, $"http:/localhost/api/Claims?userEmail={userEmail}");
-
-        //    var expectedObject = claimController.Get(userEmail);
-        //    AssertUtils.IEnumerableAreEqual(expectedObject, stubUsers.Find(f => f.Email == userEmail).Claim);
-        //}
-
         [TestMethod]
         public void GetClaimById()
         {
@@ -190,7 +179,6 @@ namespace BrokenGlassTests.WebApi
             var expectedObject = controller.GetClaimById(claimId);
         }
 
-        [TestMethod]
         public void PostClaim()
         {
             var controller = new ClaimsController(mockUnitOfWork.Object);
@@ -204,10 +192,10 @@ namespace BrokenGlassTests.WebApi
                 UserId = 1,
                 Photo = new List<Photo>() { new Photo() { ClaimId = 10, UpdateAt = DateTime.UtcNow } }
             };
-            TestUtils.SetApiControllerContextAndRequest(controller, "http://localhost/api/Claims");
-            var expectedObject = controller.PostClaim(claim);
+            //TestUtils.SetApiControllerContextAndRequest(controller, "http://localhost/api/Claims");
+            controller.PostClaim(claim);
 
-            Assert.IsTrue(stubClaims.Exists(c => c.Id == claim.Id));
+            Assert.IsTrue(stubClaims.Contains(claim));
         }
 
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace BrokenGlassWebApp.Controllers.api
 {
@@ -72,6 +73,23 @@ namespace BrokenGlassWebApp.Controllers.api
         {
             try
             {
+                if (claim == null) throw new ArgumentNullException();
+
+                var state = m_db.ClaimStateRepository.GetAll().FirstOrDefault(f => f.Code == "STATE_SENT");
+                if (state == null)
+                {
+                    throw new NullReferenceException("ClaimState with code STATE_SENT is not exist");
+                }
+
+                if (claim.UserId <= 0)
+                {
+                    SetClaimUserId(claim);
+                }
+
+                SetNullClaimForeignEntities(claim);
+                claim.CreateAt = DateTime.UtcNow;
+                claim.ClaimStateId = state.Id;
+
                 m_db.ClaimRepository.Insert(claim);
                 m_db.Save();
             }
@@ -81,9 +99,41 @@ namespace BrokenGlassWebApp.Controllers.api
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
 
+            claim.User = null;
             claim.Photo.Clear();
             var httpResponse = Request.CreateResponse<Claim>(HttpStatusCode.Created, claim);
             return httpResponse;
         }
+
+        private void SetNullClaimForeignEntities(Claim claim)
+        {
+            claim.ClaimState = null;
+            claim.Adress = null;
+            claim.Service = null;
+            claim.User = null;
+        }
+
+        private void SetClaimUserId(Claim claim)
+        {
+            
+            var userEmail = claim.User.Email;
+            if (string.IsNullOrEmpty(userEmail)) throw new NullReferenceException("Claim.User.Email equals null!");
+
+            var user = m_db.UserRepository.GetAll().FirstOrDefault(f => f.Email == userEmail);
+            if (user == null)
+            {
+                throw new Exception(string.Format("Пользователь с email {0} не найден.", userEmail));
+            }
+            claim.UserId = user.Id;
+        }
+
+       
     }
+
+    public class StubClaimObject
+    {
+        public Claim claim { get; set; }
+        public Photo photo { get; set; }
+    }
+
 }

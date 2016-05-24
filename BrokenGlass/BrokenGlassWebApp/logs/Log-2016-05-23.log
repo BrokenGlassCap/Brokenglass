@@ -1,0 +1,27 @@
+2016-05-23 09:24:27.6781 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-05-23 09:24:43.2179 TRACE Claims/GET: Claim was not found with specified ID: 1
+2016-05-23 10:47:49.4731 TRACE Claims/POST: Claim didnt created: Значение не может быть неопределенным.
+Имя параметра: entity    в System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в BrokenGlassDomain.DataLayer.GenericRepository`1.Insert(T item) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\GenericRepository.cs:строка 51
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.PostClaim(Claim claim) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 75
+2016-05-23 10:49:32.7060 TRACE Claims/POST: Claim didnt created: Значение не может быть неопределенным.
+Имя параметра: entity    в System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в BrokenGlassDomain.DataLayer.GenericRepository`1.Insert(T item) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\GenericRepository.cs:строка 51
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.PostClaim(Claim claim) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 75
+2016-05-23 11:04:13.0104 TRACE Claims/POST: Claim didnt created: Значение не может быть неопределенным.
+Имя параметра: entity    в System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в BrokenGlassDomain.DataLayer.GenericRepository`1.Insert(T item) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\GenericRepository.cs:строка 51
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.PostClaim(Claim claim) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 75
+2016-05-23 11:06:57.4018 TRACE Claims/POST: Claim didnt created: Значение не может быть неопределенным.
+Имя параметра: entity    в System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   в System.Data.Entity.DbSet`1.Add(TEntity entity)
+   в BrokenGlassDomain.DataLayer.GenericRepository`1.Insert(T item) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\GenericRepository.cs:строка 51
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.PostClaim(Claim claim) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 75
+2016-05-23 11:28:20.7702 TRACE Claims/POST: Claim didnt created: При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 94
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.PostClaim(Claim claim) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 77

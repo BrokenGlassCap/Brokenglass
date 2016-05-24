@@ -92,5 +92,44 @@ namespace BrokenGlassDomain
         }
     }
 
+    [MetadataType(typeof(ClaimMetadata))]
+    [DataContract]
+    public partial class Claim
+    {
+        internal class ClaimMetadata
+        {
+            [DataMember]
+            public int Id { get; set; }
+            [DataMember]
+            public int ServiceId { get; set; }
+            [DataMember]
+            public int AdressId { get; set; }
+            [DataMember]
+            public int UserId { get; set; }
+            [DataMember]
+            public int ClaimStateId { get; set; }
+            [DataMember]
+            public string Description { get; set; }
+            [DataMember]
+            public string Solution { get; set; }
+            [DataMember]
+            public System.DateTime CreateAt { get; set; }
+            [DataMember]
+            public Nullable<System.DateTime> UpdateAt { get; set; }
+            [DataMember]
+            public string UpdateBy { get; set; }
+            [DataMember]
+            public virtual Adress Adress { get; set; }
+            [DataMember]
+            public virtual ClaimState ClaimState { get; set; }
+            [DataMember]
+            public virtual Service Service { get; set; }
+            [DataMember]
+            public virtual User User { get; set; }
+            [DataMember]
+            public virtual ICollection<Photo> Photo { get; set; }
+        }
+    }
+
 
 }

@@ -1,0 +1,1 @@
+2016-05-24 10:18:15.2617 TRACE Claims/POST: Claim didnt created: «начение не может быть неопределенным.    в BrokenGlassWebApp.Controllers.api.ClaimsController.PostClaim(Claim claim) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 76
