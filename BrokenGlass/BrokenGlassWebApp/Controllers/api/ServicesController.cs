@@ -28,13 +28,13 @@ namespace BrokenGlassWebApp.Controllers.api
         public async Task<IEnumerable<Service>> Get()
         {
             
-            return m_dbRepositories.ServiceRepository.GetAll();
+            return await m_dbRepositories.ServiceRepository.GetAllAsync();
         }
 
-        public Service Get(string code)
+        public async Task<Service> Get(string code)
         {
-            var service = m_dbRepositories.ServiceRepository.GetAll()
-                .FirstOrDefault(f => f.Code == code);
+            var service = await m_dbRepositories.ServiceRepository.FindAsync(f => f.Code == code);
+
             if (service == null)
             {
                 ApplicationLogger.Instance.Trace(string.Format("Service/GET: request had requested Service object with non-existen Code."));
@@ -43,10 +43,10 @@ namespace BrokenGlassWebApp.Controllers.api
             return service;
         }
 
-        public Service Get(int id)
+        public async Task<Service> Get(int id)
         {
-            var service = m_dbRepositories.ServiceRepository.GetAll()
-                .FirstOrDefault(f => f.Id == id);
+            var service = await m_dbRepositories.ServiceRepository.FindAsync(f => f.Id == id);
+                
             if (service == null)
             {
                 ApplicationLogger.Instance.Trace(string.Format("Service/GET: request had requested Service object with non-existen Id."));
@@ -55,10 +55,9 @@ namespace BrokenGlassWebApp.Controllers.api
             return service;
         }
 
-        public IEnumerable<Service> Get(DateTime lastUpdateDate)
+        public async Task<IEnumerable<Service>> Get(DateTime lastUpdateDate)
         {
-            var service = m_dbRepositories.ServiceRepository.GetAll()
-                .Where(f => f.UpdateAt >= lastUpdateDate);
+            var service = await m_dbRepositories.ServiceRepository.FindAllAsync(f => f.UpdateAt >= lastUpdateDate);
 
             if (service.Count() == 0)
             {

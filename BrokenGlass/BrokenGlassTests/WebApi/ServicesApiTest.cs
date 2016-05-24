@@ -7,6 +7,9 @@ using Moq;
 using BrokenGlassDomain.DataLayer;
 using BrokenGlassDomain;
 using System.Web.Http;
+using System.Threading.Tasks;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace BrokenGlassTests.WebApi
 {
@@ -32,7 +35,14 @@ namespace BrokenGlassTests.WebApi
             mockUnitOfWork = new Mock<IUnitOfWork>();
             mockGenricRepository = new Mock<IRepository<Service>>();
 
+            mockGenricRepository.Setup(p => p.GetAllAsync()).Returns(() => Task.Factory.StartNew(() => (IEnumerable<Service>)allServices));
             mockGenricRepository.Setup(p => p.GetAll()).Returns(() => allServices);
+            mockGenricRepository.Setup(p => p.FindAsync(It.IsAny<Expression<Func<Service,bool>>>()))
+                                .Returns<Expression<Func<Service, bool>>>(r => {
+                                   return Task.Factory.StartNew(() => allServices.AsQueryable<Service>().SingleOrDefault(r));
+                                });
+
+           
             mockUnitOfWork.Setup(p => p.ServiceRepository).Returns(() => mockGenricRepository.Object);
         }
 
@@ -81,7 +91,7 @@ namespace BrokenGlassTests.WebApi
             var result = controller.Get();
 
             mockUnitOfWork.Verify(v => v.ServiceRepository,Times.Once);
-            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+            mockGenricRepository.Verify(v => v.GetAllAsync(), Times.Once);
             Assert.AreSame(result.Result, allServices);
         }
 
@@ -94,23 +104,23 @@ namespace BrokenGlassTests.WebApi
             var result = controller.Get(queryCode);
 
             mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
-            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+            mockGenricRepository.Verify(v => v.FindAsync(It.IsAny<Expression<Func<Service, bool>>>()), Times.Once);
 
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result, allServices.Find(m => m.Code == queryCode));
+            Assert.IsNotNull(result.Result);
+            Assert.AreEqual(result.Result, allServices.Find(m => m.Code == queryCode));
         }
 
         [TestMethod]
         [ExpectedException(typeof(HttpResponseException))]
-        public void GetServiceByWrongCodeAndExpectException()
+        public async Task GetServiceByWrongCodeAndExpectException()
         {
             string queryCode = "WrongCode";
             var controller = new ServicesController(mockUnitOfWork.Object);
 
-            var result = controller.Get(queryCode);
+            var result = await controller.Get(queryCode);
 
             mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
-            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+            mockGenricRepository.Verify(v => v.FindAsync(It.IsAny<Expression<Func<Service, bool>>>()), Times.Once);
 
         }
 
@@ -154,7 +164,7 @@ namespace BrokenGlassTests.WebApi
 
             Assert.IsNotNull(expectedObject);
 
-            AssertUtils.IEnumerableAreEqual(expectedObject, actualObject);
+            AssertUtils.IEnumerableAreEqual(expectedObject.Result, actualObject);
 
         }
 

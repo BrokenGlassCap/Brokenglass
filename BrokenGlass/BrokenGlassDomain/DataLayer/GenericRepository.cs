@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +35,26 @@ namespace BrokenGlassDomain.DataLayer
         public void DeleteRange(IEnumerable<T> rangeItem)
         {
             m_dbSet.RemoveRange(rangeItem);
+        }
+
+        public T Find(Expression<Func<T, bool>> match)
+        {
+            return m_dbSet.SingleOrDefault(match);
+        }
+
+        public IEnumerable<T> FindAll(Expression<Func<T, bool>> match)
+        {
+            return m_dbSet.Where(match);
+        }
+
+        public async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> match)
+        {
+            return await m_dbSet.Where(match).ToListAsync<T>();
+        }
+
+        public async Task<T> FindAsync(Expression<Func<T, bool>> match)
+        {
+            return await m_dbSet.SingleOrDefaultAsync(match);
         }
 
         public IEnumerable<T> GetAll()
