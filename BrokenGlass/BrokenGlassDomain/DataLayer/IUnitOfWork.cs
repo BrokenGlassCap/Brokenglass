@@ -15,5 +15,6 @@ namespace BrokenGlassDomain.DataLayer
         IRepository<Service> ServiceRepository { get;}
         IRepository<User> UserRepository { get;}
         void Save();
+        Task SaveAsync();
     }
 }

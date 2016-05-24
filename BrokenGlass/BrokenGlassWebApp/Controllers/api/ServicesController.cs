@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace BrokenGlassWebApp.Controllers.api
@@ -23,8 +25,9 @@ namespace BrokenGlassWebApp.Controllers.api
             m_dbRepositories = dbContext;
         }
 
-        public IEnumerable<Service> Get()
+        public async Task<IEnumerable<Service>> Get()
         {
+            
             return m_dbRepositories.ServiceRepository.GetAll();
         }
 

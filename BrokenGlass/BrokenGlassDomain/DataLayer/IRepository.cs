@@ -9,7 +9,9 @@ namespace BrokenGlassDomain.DataLayer
     public interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll();
-        T GetById(object id); 
+        Task<IEnumerable<T>> GetAllAsync();
+        T GetById(object id);
+        Task<T> GetByIdAsync(object id);
         void Insert(T item);
         void InsertRange(IEnumerable<T> rangeItem);
         void Update(T item);

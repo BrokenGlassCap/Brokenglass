@@ -98,5 +98,10 @@ namespace BrokenGlassDomain.DataLayer
         {
             m_context.Dispose();
         }
+
+        public async Task SaveAsync()
+        {
+            await m_context.SaveChangesAsync();
+        }
     }
 }

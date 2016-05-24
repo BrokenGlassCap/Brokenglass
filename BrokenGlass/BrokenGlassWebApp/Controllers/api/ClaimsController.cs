@@ -32,7 +32,10 @@ namespace BrokenGlassWebApp.Controllers.api
                 ApplicationLogger.Instance.Trace(string.Format("Claims/GET: request had requested Claims object with non-existen UserId."));
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-
+            claims.ToList().ForEach(p => {
+                p.HasPhotos = p.Photo.Any();
+                p.Photo.Clear();
+            });
             return claims;
         }
 
@@ -52,7 +55,11 @@ namespace BrokenGlassWebApp.Controllers.api
                 throw new HttpResponseException(HttpStatusCode.NoContent);
             }
 
-            user.Claim.ToList().ForEach(p => p.Photo.Clear());
+            user.Claim.ToList().ForEach(p => {
+                p.HasPhotos = p.Photo.Any();
+                p.Photo.Clear();
+            });
+
             return user.Claim;
         }
 
@@ -64,7 +71,7 @@ namespace BrokenGlassWebApp.Controllers.api
                 ApplicationLogger.Instance.Trace(string.Format("Claims/GET: Claim was not found with specified ID: {0}", id));
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-
+            claim.HasPhotos = claim.Photo.Any();
             return claim;
 
         }
@@ -128,12 +135,6 @@ namespace BrokenGlassWebApp.Controllers.api
         }
 
        
-    }
-
-    public class StubClaimObject
-    {
-        public Claim claim { get; set; }
-        public Photo photo { get; set; }
     }
 
 }

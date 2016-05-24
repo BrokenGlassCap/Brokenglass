@@ -41,9 +41,19 @@ namespace BrokenGlassDomain.DataLayer
             return m_dbSet.AsEnumerable();
         }
 
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await m_dbSet.ToListAsync<T>();
+        }
+
         public T GetById(object id)
         {
             return m_dbSet.Find(id);
+        }
+
+        public async Task<T> GetByIdAsync(object id)
+        {
+            return await m_dbSet.FindAsync(id);
         }
 
         public void Insert(T item)

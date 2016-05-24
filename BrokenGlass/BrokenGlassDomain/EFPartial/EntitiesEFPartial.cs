@@ -96,6 +96,7 @@ namespace BrokenGlassDomain
     [DataContract]
     public partial class Claim
     {
+        public bool HasPhotos { get; set; }
         internal class ClaimMetadata
         {
             [DataMember]
@@ -128,6 +129,8 @@ namespace BrokenGlassDomain
             public virtual User User { get; set; }
             [DataMember]
             public virtual ICollection<Photo> Photo { get; set; }
+            [DataMember]
+            public bool HasPhotos { get; set; }
         }
     }
 

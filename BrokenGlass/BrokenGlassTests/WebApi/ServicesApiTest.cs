@@ -82,7 +82,7 @@ namespace BrokenGlassTests.WebApi
 
             mockUnitOfWork.Verify(v => v.ServiceRepository,Times.Once);
             mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
-            Assert.AreSame(result, allServices);
+            Assert.AreSame(result.Result, allServices);
         }
 
         [TestMethod]
