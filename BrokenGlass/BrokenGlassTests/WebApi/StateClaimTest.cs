@@ -7,6 +7,9 @@ using BrokenGlassDomain.DataLayer;
 using BrokenGlassDomain;
 using BrokenGlassWebApp.Controllers.api;
 using System.Web.Http;
+using System.Threading.Tasks;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace BrokenGlassTests.WebApi
 {
@@ -31,7 +34,16 @@ namespace BrokenGlassTests.WebApi
             mockUnitOfWork = new Mock<IUnitOfWork>();
             mockGenricRepository = new Mock<IRepository<ClaimState>>();
 
+            mockGenricRepository.Setup(p => p.GetAllAsync()).Returns(() => Task.Factory.StartNew(() => (IEnumerable<ClaimState>)stateCollection));
             mockGenricRepository.Setup(p => p.GetAll()).Returns(() => stateCollection);
+            mockGenricRepository.Setup(p => p.FindAsync(It.IsAny<Expression<Func<ClaimState, bool>>>()))
+                                .Returns<Expression<Func<ClaimState, bool>>>(r => {
+                                    return Task.Factory.StartNew(() => stateCollection.AsQueryable<ClaimState>().SingleOrDefault(r));
+                                });
+            mockGenricRepository.Setup(p => p.FindAllAsync(It.IsAny<Expression<Func<ClaimState, bool>>>()))
+                                .Returns<Expression<Func<ClaimState, bool>>>(r => {
+                                    return Task.Factory.StartNew(() => stateCollection.AsQueryable<ClaimState>().Where(r).AsEnumerable());
+                                });
             mockUnitOfWork.Setup(p => p.ClaimStateRepository).Returns(() => mockGenricRepository.Object);
         }
 
@@ -73,24 +85,24 @@ namespace BrokenGlassTests.WebApi
         #endregion
 
         [TestMethod]
-        public void GetAllClaimStates()
+        public async Task GetAllClaimStates()
         {
             
             var controllerClaimStates = new ClaimStatesController(mockUnitOfWork.Object);
 
-            var result = controllerClaimStates.Get();
+            var result = await controllerClaimStates.Get();
 
             Assert.AreSame(result, stateCollection);
         }
 
 
         [TestMethod]
-        public void GetClaimStateByCode()
+        public async Task GetClaimStateByCode()
         {
             string code = "STATE_NEW";
             var controllerClaimStates = new ClaimStatesController(mockUnitOfWork.Object);
 
-            var result = controllerClaimStates.Get(code);
+            var result = await controllerClaimStates.Get(code);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result, stateCollection.Find(f => f.Code == code));
@@ -98,22 +110,22 @@ namespace BrokenGlassTests.WebApi
 
         [TestMethod]
         [ExpectedException(typeof(HttpResponseException))]
-        public void GetClaimStateByCodeAndExpectException()
+        public async Task GetClaimStateByCodeAndExpectException()
         {
             string code = "VeryWrongCode";
             var controllerClaimStates = new ClaimStatesController(mockUnitOfWork.Object);
 
-            var result = controllerClaimStates.Get(code);
+            var result = await controllerClaimStates.Get(code);
 
         }
 
         [TestMethod]
-        public void GetClaimStateById()
+        public async Task GetClaimStateById()
         {
             int id = 1;
             var controllerClaimStates = new ClaimStatesController(mockUnitOfWork.Object);
 
-            var result = controllerClaimStates.Get(id);
+            var result = await controllerClaimStates.Get(id);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result, stateCollection.Find(f => f.Id == id));
@@ -121,23 +133,23 @@ namespace BrokenGlassTests.WebApi
 
         [TestMethod]
         [ExpectedException(typeof(HttpResponseException))]
-        public void GetClaimStateByIdAndExpectException()
+        public async Task GetClaimStateByIdAndExpectException()
         {
             int id = -99999;
             var controllerClaimStates = new ClaimStatesController(mockUnitOfWork.Object);
 
-            var result = controllerClaimStates.Get(id);
+            var result = await controllerClaimStates.Get(id);
 
         }
 
         [TestMethod]
-        public void GetUpdatingClaimStateByLastUpdateDate()
+        public async Task GetUpdatingClaimStateByLastUpdateDate()
         {
             DateTime lastUpdateDate = DateTime.Now;
             var actualObject = stateCollection.FindAll(f => f.UpdateAt >= lastUpdateDate);
             var controllerServices = new ClaimStatesController(mockUnitOfWork.Object);
 
-            var expectedObject = controllerServices.Get(lastUpdateDate);
+            var expectedObject = await controllerServices.Get(lastUpdateDate);
 
             Assert.IsNotNull(expectedObject);
 
@@ -147,13 +159,13 @@ namespace BrokenGlassTests.WebApi
 
         [TestMethod]
         [ExpectedException(typeof(HttpResponseException))]
-        public void GetUpdatingClaimStateByLastUpdateDateExpectException()
+        public async Task GetUpdatingClaimStateByLastUpdateDateExpectException()
         {
             DateTime lastUpdateDate = DateTime.Now.AddDays(22);
             var actualObject = stateCollection.FindAll(f => f.UpdateAt >= lastUpdateDate);
             var controllerServices = new ClaimStatesController(mockUnitOfWork.Object);
 
-            var expectedObject = controllerServices.Get(lastUpdateDate);
+            var expectedObject = await controllerServices.Get(lastUpdateDate);
 
         }
     }

@@ -41,8 +41,11 @@ namespace BrokenGlassTests.WebApi
                                 .Returns<Expression<Func<Service, bool>>>(r => {
                                    return Task.Factory.StartNew(() => allServices.AsQueryable<Service>().SingleOrDefault(r));
                                 });
+            mockGenricRepository.Setup(p => p.FindAllAsync(It.IsAny<Expression<Func<Service, bool>>>()))
+                                .Returns<Expression<Func<Service, bool>>>(r => {
+                                    return Task.Factory.StartNew(() => allServices.AsQueryable<Service>().Where(r).AsEnumerable());
+                                });
 
-           
             mockUnitOfWork.Setup(p => p.ServiceRepository).Returns(() => mockGenricRepository.Object);
         }
 
@@ -83,31 +86,31 @@ namespace BrokenGlassTests.WebApi
         #endregion
 
         [TestMethod]
-        public void GetAllServices()
+        public async Task GetAllServices()
         {
             
             var controller = new ServicesController(mockUnitOfWork.Object);
 
-            var result = controller.Get();
+            var result = await controller.Get();
 
             mockUnitOfWork.Verify(v => v.ServiceRepository,Times.Once);
             mockGenricRepository.Verify(v => v.GetAllAsync(), Times.Once);
-            Assert.AreSame(result.Result, allServices);
+            Assert.AreSame(result, allServices);
         }
 
         [TestMethod]
-        public void GetServiceByCode()
+        public async Task GetServiceByCode()
         {
             string queryCode = "ORANGE";
             var controller = new ServicesController(mockUnitOfWork.Object);
 
-            var result = controller.Get(queryCode);
+            var result = await controller.Get(queryCode);
 
             mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
             mockGenricRepository.Verify(v => v.FindAsync(It.IsAny<Expression<Func<Service, bool>>>()), Times.Once);
 
-            Assert.IsNotNull(result.Result);
-            Assert.AreEqual(result.Result, allServices.Find(m => m.Code == queryCode));
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result, allServices.Find(m => m.Code == queryCode));
         }
 
         [TestMethod]
@@ -125,15 +128,15 @@ namespace BrokenGlassTests.WebApi
         }
 
         [TestMethod]
-        public void GetServiceById()
+        public async Task GetServiceById()
         {
             int id = 1;
             var controller = new ServicesController(mockUnitOfWork.Object);
 
-            var result = controller.Get(id);
+            var result = await controller.Get(id);
 
             mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
-            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+            mockGenricRepository.Verify(v => v.FindAsync(It.IsAny<Expression<Func<Service, bool>>>()), Times.Once);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(result, allServices.Find(m => m.Id == id));
@@ -141,42 +144,42 @@ namespace BrokenGlassTests.WebApi
 
         [TestMethod]
         [ExpectedException(typeof(HttpResponseException))]
-        public void GetServiceByWrongIdAndExpectException()
+        public async Task GetServiceByWrongIdAndExpectException()
         {
             int id = -9999;
             var controller = new ServicesController(mockUnitOfWork.Object);
 
-            var result = controller.Get(id);
+            var result = await controller.Get(id);
 
             mockUnitOfWork.Verify(v => v.ServiceRepository, Times.Once);
-            mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+            mockGenricRepository.Verify(v => v.FindAsync(It.IsAny<Expression<Func<Service, bool>>>()), Times.Once);
 
         }
 
         [TestMethod]
-        public void GetUpdatingServicesByLastUpdateDate()
+        public async Task GetUpdatingServicesByLastUpdateDate()
         {
             DateTime lastUpdateDate = DateTime.Now;
             var actualObject = allServices.FindAll(f => f.UpdateAt >= lastUpdateDate);
             var controllerServices = new ServicesController(mockUnitOfWork.Object);
 
-            var expectedObject = controllerServices.Get(lastUpdateDate);
+            var expectedObject = await controllerServices.Get(lastUpdateDate);
 
             Assert.IsNotNull(expectedObject);
 
-            AssertUtils.IEnumerableAreEqual(expectedObject.Result, actualObject);
+            AssertUtils.IEnumerableAreEqual(expectedObject, actualObject);
 
         }
 
         [TestMethod]
         [ExpectedException(typeof(HttpResponseException))]
-        public void GetUpdatingServicesByLastUpdateDateExpectException()
+        public async Task GetUpdatingServicesByLastUpdateDateExpectException()
         {
             DateTime lastUpdateDate = DateTime.Now.AddDays(22);
             var actualObject = allServices.FindAll(f => f.UpdateAt >= lastUpdateDate);
             var controllerServices = new ServicesController(mockUnitOfWork.Object);
 
-            var expectedObject = controllerServices.Get(lastUpdateDate);
+            var expectedObject = await controllerServices.Get(lastUpdateDate);
 
         }
 
