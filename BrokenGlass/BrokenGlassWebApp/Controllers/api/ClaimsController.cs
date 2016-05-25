@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace BrokenGlassWebApp.Controllers.api
 {
@@ -23,26 +24,29 @@ namespace BrokenGlassWebApp.Controllers.api
             m_db = unitOfWork;
         }
 
-        public IEnumerable<Claim> Get(int userId)
+        public async Task<IEnumerable<Claim>> Get(int userId)
         {
-            var claims = m_db.ClaimRepository.GetAll().Where(w => w.UserId == userId);
+            var claims = await m_db.ClaimRepository.FindAllAsync(w => w.UserId == userId);
 
             if (claims.Count() == 0)
             {
                 ApplicationLogger.Instance.Trace(string.Format("Claims/GET: request had requested Claims object with non-existen UserId."));
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            claims.ToList().ForEach(p => {
+
+            await Task.Factory.StartNew(() => claims.ToList().ForEach(p =>
+            {
                 p.HasPhotos = p.Photo.Any();
                 p.Photo.Clear();
-            });
+            }));
+            
             return claims;
         }
 
-        public IEnumerable<Claim> Get(string userEmail)
+        public async Task<IEnumerable<Claim>> Get(string userEmail)
         {
 
-            var user = m_db.UserRepository.GetAll().FirstOrDefault(f => f.Email == userEmail);
+            var user = await m_db.UserRepository.FindAsync(f => f.Email == userEmail);
             if (user == null)
             {
                 ApplicationLogger.Instance.Trace(string.Format("Claims/GET: User was not found with specified Email: {0}",userEmail));
@@ -55,17 +59,19 @@ namespace BrokenGlassWebApp.Controllers.api
                 throw new HttpResponseException(HttpStatusCode.NoContent);
             }
 
-            user.Claim.ToList().ForEach(p => {
-                p.HasPhotos = p.Photo.Any();
-                p.Photo.Clear();
-            });
+            await Task.Factory.StartNew(() => user.Claim.ToList().ForEach(p =>
+                    {
+                        p.HasPhotos = p.Photo.Any();
+                        p.Photo.Clear();
+                    })
+                );
 
             return user.Claim;
         }
 
-        public Claim GetClaimById(int id)
+        public async Task<Claim> GetClaimById(int id)
         {
-            var claim = m_db.ClaimRepository.GetById(id);
+            var claim = await m_db.ClaimRepository.GetByIdAsync(id);
             if (claim == null)
             {
                 ApplicationLogger.Instance.Trace(string.Format("Claims/GET: Claim was not found with specified ID: {0}", id));
@@ -76,13 +82,13 @@ namespace BrokenGlassWebApp.Controllers.api
 
         }
         [HttpPost]
-        public HttpResponseMessage PostClaim(Claim claim)
+        public async Task<HttpResponseMessage> PostClaim(Claim claim)
         {
             try
             {
                 if (claim == null) throw new ArgumentNullException();
 
-                var state = m_db.ClaimStateRepository.GetAll().FirstOrDefault(f => f.Code == "STATE_SENT");
+                var state = await m_db.ClaimStateRepository.FindAsync(f => f.Code == "STATE_SENT");
                 if (state == null)
                 {
                     throw new NullReferenceException("ClaimState with code STATE_SENT is not exist");
@@ -90,7 +96,7 @@ namespace BrokenGlassWebApp.Controllers.api
 
                 if (claim.UserId <= 0)
                 {
-                    SetClaimUserId(claim);
+                    await SetClaimUserId(claim);
                 }
 
                 SetNullClaimForeignEntities(claim);
@@ -98,7 +104,7 @@ namespace BrokenGlassWebApp.Controllers.api
                 claim.ClaimStateId = state.Id;
 
                 m_db.ClaimRepository.Insert(claim);
-                m_db.Save();
+                await m_db.SaveAsync();
             }
             catch (Exception ex)
             {
@@ -120,13 +126,13 @@ namespace BrokenGlassWebApp.Controllers.api
             claim.User = null;
         }
 
-        private void SetClaimUserId(Claim claim)
+        private async Task SetClaimUserId(Claim claim)
         {
             
             var userEmail = claim.User.Email;
             if (string.IsNullOrEmpty(userEmail)) throw new NullReferenceException("Claim.User.Email equals null!");
 
-            var user = m_db.UserRepository.GetAll().FirstOrDefault(f => f.Email == userEmail);
+            var user = await m_db.UserRepository.FindAsync(f => f.Email == userEmail);
             if (user == null)
             {
                 throw new Exception(string.Format("Пользователь с email {0} не найден.", userEmail));

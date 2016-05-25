@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace BrokenGlassWebApp.Controllers.api
@@ -23,15 +24,15 @@ namespace BrokenGlassWebApp.Controllers.api
             m_dbRepositories = dbContext;
         }
 
-        public IEnumerable<Adress> Get()
+        public async Task<IEnumerable<Adress>> Get()
         {
-            return m_dbRepositories.AdressRepository.GetAll();
+            return await m_dbRepositories.AdressRepository.GetAllAsync();
         }
 
-        public Adress Get(int id)
+        public async Task<Adress> Get(int id)
         {
-            var adress = m_dbRepositories.AdressRepository.GetAll()
-                .FirstOrDefault(f => f.Id == id);
+            var adress = await m_dbRepositories.AdressRepository.FindAsync(f => f.Id == id);
+                
             if (adress == null)
             {
                 ApplicationLogger.Instance.Trace(string.Format("Adress/GET: request had requested Adress object with non-existen Id."));
@@ -40,10 +41,9 @@ namespace BrokenGlassWebApp.Controllers.api
             return adress;
         }
 
-        public IEnumerable<Adress> Get(DateTime lastUpdateDate)
+        public async  Task<IEnumerable<Adress>> Get(DateTime lastUpdateDate)
         {
-            var adress = m_dbRepositories.AdressRepository.GetAll()
-                .Where(f => f.UpdateAt >= lastUpdateDate);
+            var adress = await m_dbRepositories.AdressRepository.FindAllAsync(f => f.UpdateAt >= lastUpdateDate);
 
             if (adress.Count() == 0)
             {

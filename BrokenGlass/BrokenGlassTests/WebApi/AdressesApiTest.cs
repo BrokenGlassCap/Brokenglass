@@ -7,6 +7,9 @@ using BrokenGlassDomain;
 using Moq;
 using System.Web.Http;
 using BrokenGlassWebApp.Controllers.api;
+using System.Threading.Tasks;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace BrokenGlassTests.WebApi
 {
@@ -37,7 +40,17 @@ namespace BrokenGlassTests.WebApi
                 mockUnitOfWork = new Mock<IUnitOfWork>();
                 mockGenricRepository = new Mock<IRepository<Adress>>();
 
+                mockGenricRepository.Setup(p => p.GetAllAsync()).Returns(() => Task.Factory.StartNew(() => (IEnumerable<Adress>)allAdresses));
                 mockGenricRepository.Setup(p => p.GetAll()).Returns(() => allAdresses);
+                mockGenricRepository.Setup(p => p.FindAsync(It.IsAny<Expression<Func<Adress, bool>>>()))
+                                    .Returns<Expression<Func<Adress, bool>>>(r => {
+                                        return Task.Factory.StartNew(() => allAdresses.AsQueryable<Adress>().SingleOrDefault(r));
+                                    });
+                mockGenricRepository.Setup(p => p.FindAllAsync(It.IsAny<Expression<Func<Adress, bool>>>()))
+                                    .Returns<Expression<Func<Adress, bool>>>(r => {
+                                        return Task.Factory.StartNew(() => allAdresses.AsQueryable<Adress>().Where(r).AsEnumerable());
+                                    });
+
                 mockUnitOfWork.Setup(p => p.AdressRepository).Returns(() => mockGenricRepository.Object);
             }
 
@@ -76,29 +89,29 @@ namespace BrokenGlassTests.WebApi
             #endregion
 
             [TestMethod]
-            public void GetAllAdresses()
+            public async Task GetAllAdresses()
             {
 
                 var controller = new AdressesController(mockUnitOfWork.Object);
 
-                var result = controller.Get();
+                var result = await controller.Get();
 
                 mockUnitOfWork.Verify(v => v.AdressRepository, Times.Once);
-                mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+                mockGenricRepository.Verify(v => v.GetAllAsync(), Times.Once);
                 Assert.AreSame(result, allAdresses);
             }
 
 
             [TestMethod]
-            public void GetAdressesById()
+            public async Task GetAdressesById()
             {
                 int id = 1;
                 var controller = new AdressesController(mockUnitOfWork.Object);
 
-                var result = controller.Get(id);
+                var result = await controller.Get(id);
 
                 mockUnitOfWork.Verify(v => v.AdressRepository, Times.Once);
-                mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+                mockGenricRepository.Verify(v => v.FindAsync(It.IsAny<Expression<Func<Adress, bool>>>()), Times.Once);
 
                 Assert.IsNotNull(result);
                 Assert.AreEqual(result, allAdresses.Find(m => m.Id == id));
@@ -106,26 +119,26 @@ namespace BrokenGlassTests.WebApi
 
             [TestMethod]
             [ExpectedException(typeof(HttpResponseException))]
-            public void GetAdressesByWrongIdAndExpectException()
+            public async Task GetAdressesByWrongIdAndExpectException()
             {
                 int id = -9999;
                 var controller = new AdressesController(mockUnitOfWork.Object);
 
-                var result = controller.Get(id);
+                var result = await controller.Get(id);
 
                 mockUnitOfWork.Verify(v => v.AdressRepository, Times.Once);
-                mockGenricRepository.Verify(v => v.GetAll(), Times.Once);
+                mockGenricRepository.Verify(v => v.FindAsync(It.IsAny<Expression<Func<Adress, bool>>>()), Times.Once);
 
             }
 
             [TestMethod]
-            public void GetUpdatingAdressesByLastUpdateDate()
+            public async Task GetUpdatingAdressesByLastUpdateDate()
             {
                 DateTime lastUpdateDate = DateTime.Now;
                 var actualObject = allAdresses.FindAll(f => f.UpdateAt >= lastUpdateDate);
                 var controllerAdresses = new AdressesController(mockUnitOfWork.Object);
 
-                var expectedObject = controllerAdresses.Get(lastUpdateDate);
+                var expectedObject = await controllerAdresses.Get(lastUpdateDate);
 
                 Assert.IsNotNull(expectedObject);
 
@@ -135,13 +148,13 @@ namespace BrokenGlassTests.WebApi
 
             [TestMethod]
             [ExpectedException(typeof(HttpResponseException))]
-            public void GetUpdatingAdressesByLastUpdateDateExpectException()
+            public async Task GetUpdatingAdressesByLastUpdateDateExpectException()
             {
                 DateTime lastUpdateDate = DateTime.Now.AddDays(22);
                 var actualObject = allAdresses.FindAll(f => f.UpdateAt >= lastUpdateDate);
                 var controllerServices = new AdressesController(mockUnitOfWork.Object);
 
-                var expectedObject = controllerServices.Get(lastUpdateDate);
+                var expectedObject = await controllerServices.Get(lastUpdateDate);
 
             }
 

@@ -1,1 +1,5 @@
 2016-05-24 10:18:15.2617 TRACE Claims/POST: Claim didnt created: «начение не может быть неопределенным.    в BrokenGlassWebApp.Controllers.api.ClaimsController.PostClaim(Claim claim) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 76
+2016-05-24 18:02:28.7349 TRACE Service/GET: request had requested Service object with non-existen Code.
+2016-05-24 18:02:32.6311 TRACE Service/GET: request had requested Service object with non-existen Code.
+2016-05-24 18:02:33.3041 TRACE Service/GET: request had requested Service object with non-existen Code.
+2016-05-24 18:02:49.3391 TRACE Service/GET: request had requested Service object with non-existen Code.

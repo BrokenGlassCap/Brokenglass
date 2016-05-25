@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace BrokenGlassWebApp.Controllers.api
@@ -22,14 +23,14 @@ namespace BrokenGlassWebApp.Controllers.api
             db = unitOfWork;
         }
 
-        public IEnumerable<ClaimState> Get()
+        public async Task<IEnumerable<ClaimState>> Get()
         {
-            return db.ClaimStateRepository.GetAll();
+            return await db.ClaimStateRepository.GetAllAsync();
         }
 
-        public ClaimState Get(string code)
+        public async Task<ClaimState> Get(string code)
         {
-            var claimState = db.ClaimStateRepository.GetAll().FirstOrDefault(f => f.Code == code);
+            var claimState = await db.ClaimStateRepository.FindAsync(f => f.Code == code);
             if (claimState == null)
             {
                 ApplicationLogger.Instance.Trace(string.Format("ClaimState/GET: request had requested ClaimState object with non-existen Code."));
@@ -39,9 +40,9 @@ namespace BrokenGlassWebApp.Controllers.api
             return claimState;
         }
 
-        public ClaimState Get(int id)
+        public async Task<ClaimState> Get(int id)
         {
-            var claimState = db.ClaimStateRepository.GetAll().FirstOrDefault(f => f.Id == id);
+            var claimState = await db.ClaimStateRepository.FindAsync(f => f.Id == id);
             if (claimState == null)
             {
                 ApplicationLogger.Instance.Trace(string.Format("ClaimState/GET: request had requested ClaimState object with non-existen ID."));
@@ -51,10 +52,9 @@ namespace BrokenGlassWebApp.Controllers.api
             return claimState;
         }
 
-        public IEnumerable<ClaimState> Get(DateTime lastUpdateDate)
+        public async Task<IEnumerable<ClaimState>> Get(DateTime lastUpdateDate)
         {
-            var claimStates = db.ClaimStateRepository.GetAll()
-                .Where(f => f.UpdateAt >= lastUpdateDate);
+            var claimStates = await db.ClaimStateRepository.FindAllAsync(f => f.UpdateAt >= lastUpdateDate);
 
             if (claimStates.Count() == 0)
             {
