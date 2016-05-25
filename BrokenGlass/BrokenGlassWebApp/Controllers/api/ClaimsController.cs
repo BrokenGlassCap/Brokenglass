@@ -88,7 +88,7 @@ namespace BrokenGlassWebApp.Controllers.api
             {
                 if (claim == null) throw new ArgumentNullException();
 
-                var state = m_db.ClaimStateRepository.FindAsync(f => f.Code == "STATE_SENT");
+                var state = await m_db.ClaimStateRepository.FindAsync(f => f.Code == "STATE_SENT");
                 if (state == null)
                 {
                     throw new NullReferenceException("ClaimState with code STATE_SENT is not exist");

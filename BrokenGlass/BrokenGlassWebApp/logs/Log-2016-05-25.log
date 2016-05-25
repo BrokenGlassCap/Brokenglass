@@ -1,0 +1,73 @@
+2016-05-25 13:04:44.0024 TRACE Claims/POST: Claim didnt created: В этом контексте была начата вторая операция до завершения предыдущей асинхронной операции. Используйте "await", чтобы гарантировать завершение асинхронных операций перед вызовом другого метода в данном контексте. Потокобезопасность членов экземпляров не гарантируется.    в System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesAsync(SaveOptions options, CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.InternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.<SaveAsync>d__21.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 104
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 107
+2016-05-25 13:05:11.7800 TRACE Claims/POST: Claim didnt created: В этом контексте была начата вторая операция до завершения предыдущей асинхронной операции. Используйте "await", чтобы гарантировать завершение асинхронных операций перед вызовом другого метода в данном контексте. Потокобезопасность членов экземпляров не гарантируется.    в System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesAsync(SaveOptions options, CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.InternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.<SaveAsync>d__21.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 104
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 107
+2016-05-25 13:05:45.1979 TRACE Claims/POST: Claim didnt created: В этом контексте была начата вторая операция до завершения предыдущей асинхронной операции. Используйте "await", чтобы гарантировать завершение асинхронных операций перед вызовом другого метода в данном контексте. Потокобезопасность членов экземпляров не гарантируется.    в System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesAsync(SaveOptions options, CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.InternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.<SaveAsync>d__21.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 104
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 107
+2016-05-25 13:05:49.2661 TRACE Claims/POST: Claim didnt created: В этом контексте была начата вторая операция до завершения предыдущей асинхронной операции. Используйте "await", чтобы гарантировать завершение асинхронных операций перед вызовом другого метода в данном контексте. Потокобезопасность членов экземпляров не гарантируется.    в System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesAsync(SaveOptions options, CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.InternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.<SaveAsync>d__21.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 104
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 107
+2016-05-25 13:06:33.8427 TRACE Claims/POST: Claim didnt created: В этом контексте была начата вторая операция до завершения предыдущей асинхронной операции. Используйте "await", чтобы гарантировать завершение асинхронных операций перед вызовом другого метода в данном контексте. Потокобезопасность членов экземпляров не гарантируется.    в System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesAsync(SaveOptions options, CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.InternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.<SaveAsync>d__21.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 104
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 107
+2016-05-25 13:06:51.9257 TRACE Claims/POST: Claim didnt created: В этом контексте была начата вторая операция до завершения предыдущей асинхронной операции. Используйте "await", чтобы гарантировать завершение асинхронных операций перед вызовом другого метода в данном контексте. Потокобезопасность членов экземпляров не гарантируется.    в System.Data.Entity.Internal.ThrowingMonitor.EnsureNotEntered()
+   в System.Data.Entity.Core.Objects.ObjectContext.SaveChangesAsync(SaveOptions options, CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.InternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync(CancellationToken cancellationToken)
+   в System.Data.Entity.DbContext.SaveChangesAsync()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.<SaveAsync>d__21.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 104
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 107
+2016-05-25 13:15:08.8621 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
