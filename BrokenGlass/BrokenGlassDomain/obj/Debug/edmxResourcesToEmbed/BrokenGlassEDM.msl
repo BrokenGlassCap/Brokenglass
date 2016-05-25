@@ -71,6 +71,7 @@
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="BROKEN_GLASSModel.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IdentityUserId" ColumnName="IdentityUserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />

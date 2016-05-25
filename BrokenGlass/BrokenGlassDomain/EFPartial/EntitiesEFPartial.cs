@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BrokenGlassDomain
 {
@@ -132,7 +133,10 @@ namespace BrokenGlassDomain
             [DataMember]
             public bool HasPhotos { get; set; }
         }
+
     }
+
+    
 
 
 }

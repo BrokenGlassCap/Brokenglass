@@ -83,6 +83,7 @@
     <Property Name="UpdateAt" Type="DateTime" Precision="3" />
     <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__UserId__4BAC3F29" FromRole="User" ToRole="Claim" />
+    <Property Name="IdentityUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK__Claim__AdressId__4AB81AF0">
     <End Role="Adress" Type="Self.Adress" Multiplicity="1" />

@@ -78,6 +78,7 @@
           <Property Name="Avatar" Type="varbinary(max)" />
           <Property Name="UpdateAt" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="IdentityUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <Association Name="FK__Claim__AdressId__4AB81AF0">
           <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
@@ -115,18 +116,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Claim__UserId__4BAC3F29">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Claim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Photo__ClaimId__73BA3083">
           <End Role="Claim" Type="Self.Claim" Multiplicity="1" />
           <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
@@ -156,10 +145,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__Claim__ServiceId__49C3F6B7" Association="Self.FK__Claim__ServiceId__49C3F6B7">
             <End Role="Service" EntitySet="Service" />
-            <End Role="Claim" EntitySet="Claim" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Claim__UserId__4BAC3F29" Association="Self.FK__Claim__UserId__4BAC3F29">
-            <End Role="User" EntitySet="User" />
             <End Role="Claim" EntitySet="Claim" />
           </AssociationSet>
           <AssociationSet Name="FK__Photo__ClaimId__73BA3083" Association="Self.FK__Photo__ClaimId__73BA3083">
@@ -254,6 +239,7 @@
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__UserId__4BAC3F29" FromRole="User" ToRole="Claim" />
+          <Property Name="IdentityUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Claim__AdressId__4AB81AF0">
           <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
@@ -419,6 +405,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="BROKEN_GLASSModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdentityUserId" ColumnName="IdentityUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

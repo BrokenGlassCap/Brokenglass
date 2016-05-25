@@ -72,3 +72,12 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\BrokenG
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\NLog.config
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\NLog.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\NLog.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Owin.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\System.Web.Http.Owin.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\System.Web.Http.Owin.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
