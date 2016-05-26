@@ -81,3 +81,11 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microso
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.xml
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\System.Web.Http.Owin.xml
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.OAuth.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.Cookies.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.Cookies.xml

@@ -121,6 +121,9 @@
     <Compile Include="DataLayer\IUnitOfWork.cs" />
     <Compile Include="DataLayer\UnitOfWork.cs" />
     <Compile Include="EFPartial\EntitiesEFPartial.cs" />
+    <Compile Include="Entities\UserFactory.cs" />
+    <Compile Include="Entities\UserRegistrationModel.cs" />
+    <Compile Include="Exceptions\IdentityUserCreateException.cs" />
     <Compile Include="Photo.cs">
       <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
     </Compile>
