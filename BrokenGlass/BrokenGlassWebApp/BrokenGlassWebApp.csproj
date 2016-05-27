@@ -225,6 +225,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdressesDataController.cs" />
+    <Compile Include="Controllers\api\AccountController.cs" />
     <Compile Include="Controllers\api\AdressesController.cs" />
     <Compile Include="Controllers\api\ClaimsController.cs" />
     <Compile Include="Controllers\api\ClaimStatesController.cs" />

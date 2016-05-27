@@ -102,7 +102,6 @@ namespace BrokenGlassDomain
         {
             [DataMember]
             public int Id { get; set; }
-            [DataMember]
             public int ServiceId { get; set; }
             [DataMember]
             public int AdressId { get; set; }
@@ -120,13 +119,9 @@ namespace BrokenGlassDomain
             public Nullable<System.DateTime> UpdateAt { get; set; }
             [DataMember]
             public string UpdateBy { get; set; }
-            [DataMember]
             public virtual Adress Adress { get; set; }
-            [DataMember]
             public virtual ClaimState ClaimState { get; set; }
-            [DataMember]
             public virtual Service Service { get; set; }
-            [DataMember]
             public virtual User User { get; set; }
             [DataMember]
             public virtual ICollection<Photo> Photo { get; set; }

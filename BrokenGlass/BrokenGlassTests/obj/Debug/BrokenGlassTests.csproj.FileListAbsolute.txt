@@ -89,3 +89,6 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microso
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.OAuth.xml
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.xml
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

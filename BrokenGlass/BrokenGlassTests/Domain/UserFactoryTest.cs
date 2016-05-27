@@ -9,19 +9,36 @@ using Moq.Protected;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Threading.Tasks;
+using BrokenGlassDomain.DataLayer;
 
 namespace BrokenGlassTests.Domain
 {
     [TestClass]
     public class UserFactoryTest
     {
+        private TestContext testContextInstance;
+        private Mock<IUnitOfWork> mockUnitOfWork;
         private List<User> stubUsers;
         private Mock<UserFactory> mockUserFactory;
         private Mock<UserManager<IdentityUser>> mockUserManager;
+        private Mock<AuthDBContext> mockAuthContext;
+        private Mock<IRepository<User>> mockUsersRepository;
+
         public UserFactoryTest()
         {
             InitStubUserList();
 
+        }
+
+        private void InitMockUnitOfWork()
+        {
+            mockUnitOfWork = new Mock<IUnitOfWork>();
+            mockUsersRepository = new Mock<IRepository<User>>();
+            mockUnitOfWork.Setup(p => p.UserRepository).Returns(() => mockUsersRepository.Object);
+        }
+        private void InitMockAuthContext()
+        {
+            mockAuthContext = new Mock<AuthDBContext>();
         }
         private void InitMockUserFactory()
         {
@@ -32,7 +49,8 @@ namespace BrokenGlassTests.Domain
         private void InitMockUserManager()
         {
             mockUserManager = new Mock<UserManager<IdentityUser>>();
-            mockUserManager.Setup(m => m.CreateAsync(It.IsAny<IdentityUser>(), It.IsAny<string>())).Callback<IdentityUser>(i => { Task.Factory.StartNew(() => { stubUsers.Add(new User() { Email = i.Email });}); });
+            //mockUserManager.Setup(m => m.CreateAsync(It.IsAny<IdentityUser>(), It.IsAny<string>())).Callback((IdentityUser i, string pass) => { Task.Factory.StartNew(() => { stubUsers.Add(new User() { Email = i.Email });}); });
+            mockUserManager.Setup(m => m.CreateAsync(It.IsAny<IdentityUser>(), It.IsAny<string>())).Callback((IdentityUser i, string pass) => { stubUsers.Add(new User() { Email = i.Email }); });
         }
 
         private void InitStubUserList()
@@ -57,8 +75,6 @@ namespace BrokenGlassTests.Domain
             };
         }
 
-
-        private TestContext testContextInstance;
         public TestContext TestContext
         {
             get
@@ -92,11 +108,10 @@ namespace BrokenGlassTests.Domain
         // public void MyTestCleanup() { }
         //
         #endregion
-
-        [TestMethod]
+    
         public async Task Registration()
         {
-            var userFactory = UserFactory.GetUser();
+            var userFactory = UserFactory.GetUser(mockUserManager.Object, mockAuthContext.Object,mockUnitOfWork.Object);
             var userRegistrationModel = new UserRegistrationModel()
             {
                 Email = "ivan@sberbank.ru",
@@ -104,8 +119,8 @@ namespace BrokenGlassTests.Domain
                 ConfirmPassword = "123123"
             };
 
-            await userFactory.Registration(userRegistrationModel);
-            mockUserManager.Verify(m => m.CreateAsync(It.IsAny<IdentityUser>(), It.IsAny<string>()));
+            await userFactory.RegistrationAsync(userRegistrationModel);
+            mockUserManager.Verify(m => m.CreateAsync(It.IsAny<IdentityUser>(), It.IsAny<string>()),Times.Once);
             Assert.IsTrue(stubUsers.Exists(e => e.Email == "ivan@sberbank.ru"));
 
         }

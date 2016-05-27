@@ -77,7 +77,7 @@ namespace BrokenGlassWebApp.Controllers.api
                 ApplicationLogger.Instance.Trace(string.Format("Claims/GET: Claim was not found with specified ID: {0}", id));
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            await Task.Factory.StartNew(() => SetNullClaimForeignEntities(claim));
+            SetNullClaimForeignEntities(claim);
             claim.HasPhotos = claim.Photo.Any();
             return claim;
 
