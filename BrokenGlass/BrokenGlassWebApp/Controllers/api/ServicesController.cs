@@ -12,6 +12,7 @@ using System.Web.Http;
 
 namespace BrokenGlassWebApp.Controllers.api
 {
+    [Authorize]
     public class ServicesController : ApiController
     {
         private IUnitOfWork m_dbRepositories;

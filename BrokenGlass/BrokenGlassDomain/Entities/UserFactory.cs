@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using BrokenGlassDomain.DataLayer;
 using BrokenGlassDomain.Exceptions;
 using BrokenGlassDomain.ServiceUtils;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.DataProtection;
 
 namespace BrokenGlassDomain.Entities
 {
@@ -48,7 +51,7 @@ namespace BrokenGlassDomain.Entities
             return new UserFactory(obj,ctx,db);
         }
 
-        public async Task RegistrationAsync(UserRegistrationModel user)
+        public async Task<IdentityUser> RegistrationAsync(UserRegistrationModel user)
         {
             var identityUser = new IdentityUser() {
                 UserName = user.Email,
@@ -63,7 +66,8 @@ namespace BrokenGlassDomain.Entities
 
             if (!identityCreateResult.Succeeded)
             {
-                throw new IdentityUserCreateException("A object of IdentityUser type was not create.");
+                var stringError = CreateStringErrorByIdentityResultErrors(identityCreateResult);
+                throw new IdentityUserCreateException($"A object of IdentityUser type was not create.\n{stringError}");
             }
 
             var identityNewUser = await FindIdentityUserAsync(user.Email);
@@ -75,11 +79,55 @@ namespace BrokenGlassDomain.Entities
             };
             m_db.UserRepository.Insert(userDb);
             await m_db.SaveAsync();
+
+            return identityNewUser;
         }
 
         public async Task<IdentityUser> FindIdentityUserAsync(string email)
         {
             return await m_userManager.FindByNameAsync(email);
+        }
+
+        public async Task<IdentityUser> FindIdentityUserNameAndPasswordAsync(string email, string password)
+        {
+            return await m_userManager.FindAsync(email, password);
+        }
+
+        public async Task<ClaimsIdentity> CreateIdentityAsync(IdentityUser user, string authenticationType )
+        {
+            return await m_userManager.CreateIdentityAsync(user, authenticationType);
+        }
+
+        public async Task<string> GenerateEmailConfirmationTokenAsync(string userId)
+        {
+            var factoryOptions = new IdentityFactoryOptions<UserManager<IdentityUser>>();
+            factoryOptions.DataProtectionProvider = new DpapiDataProtectionProvider("BGWebApi");
+
+            m_userManager.UserTokenProvider = new DataProtectorTokenProvider<IdentityUser>(factoryOptions.DataProtectionProvider.Create("ASP.NET Identity"))
+            {
+                TokenLifespan = TimeSpan.FromHours(6)
+            };
+
+            return await m_userManager.GenerateEmailConfirmationTokenAsync(userId);
+        }
+
+        public async Task<IdentityResult> ConfirmEmailAsync(string userId, string token)
+        {
+            var factoryOptions = new IdentityFactoryOptions<UserManager<IdentityUser>>();
+            factoryOptions.DataProtectionProvider = new DpapiDataProtectionProvider("BGWebApi");
+            m_userManager.UserTokenProvider = new DataProtectorTokenProvider<IdentityUser>(factoryOptions.DataProtectionProvider.Create("ASP.NET Identity"));
+            return await m_userManager.ConfirmEmailAsync(userId, token);
+        }
+
+        public string CreateStringErrorByIdentityResultErrors(IdentityResult identityResult)
+        {
+            StringBuilder strBuilder = new StringBuilder();
+            foreach (var error in identityResult.Errors)
+            {
+                strBuilder.AppendLine(error);
+            }
+
+            return strBuilder.ToString();
         }
 
         public void Dispose()

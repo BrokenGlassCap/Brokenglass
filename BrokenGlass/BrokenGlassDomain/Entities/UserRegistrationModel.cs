@@ -9,7 +9,7 @@ namespace BrokenGlassDomain.Entities
 {
     public class UserRegistrationModel
     {
-
+        //[RegularExpression(@"^\w+([+-.']\w+)*@sberbank\.ru",ErrorMessage ="Введен неверный Email")]
         public string Email { get; set; }
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\S]{8,}$",ErrorMessage ="Неверный формат пароля.")]
         [DataType(DataType.Password)]
