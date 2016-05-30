@@ -70,15 +70,24 @@ namespace BrokenGlassDomain.Entities
                 throw new IdentityUserCreateException($"A object of IdentityUser type was not create.\n{stringError}");
             }
 
-            var identityNewUser = await FindIdentityUserAsync(user.Email);
-            var userDb = new User()
+            IdentityUser identityNewUser = null;
+            try
             {
-                Email = identityNewUser.UserName,
-                IdentityUserId = identityNewUser.Id,
-                UpdateAt = DateTime.UtcNow
-            };
-            m_db.UserRepository.Insert(userDb);
-            await m_db.SaveAsync();
+                identityNewUser = await FindIdentityUserAsync(user.Email);
+                var userDb = new User()
+                {
+                    Email = identityNewUser.UserName,
+                    IdentityUserId = identityNewUser.Id,
+                    UpdateAt = DateTime.UtcNow
+                };
+                m_db.UserRepository.Insert(userDb);
+                await m_db.SaveAsync();
+            }
+            catch (Exception ex)
+            {
+                await m_userManager.DeleteAsync(identityNewUser);
+                throw new IdentityUserCreateException($"At momet creating Broken Glass Db User was throw exception {ex.Message} {ex.StackTrace}");
+            }
 
             return identityNewUser;
         }
@@ -86,6 +95,10 @@ namespace BrokenGlassDomain.Entities
         public async Task<IdentityUser> FindIdentityUserAsync(string email)
         {
             return await m_userManager.FindByNameAsync(email);
+        }
+        public async Task<IdentityUser> FindIdentityUserByIdAsync(string userId)
+        {
+            return await m_userManager.FindByIdAsync(userId);
         }
 
         public async Task<IdentityUser> FindIdentityUserNameAndPasswordAsync(string email, string password)

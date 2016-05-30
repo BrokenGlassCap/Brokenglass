@@ -40,6 +40,30 @@
     <Property Name="UpdateAt" Type="datetime" />
     <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
   </EntityType>
+  <EntityType Name="GlobalParameters">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="UpdateAt" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MetaDataDictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="UpdateAt" Type="datetime" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="Photo">
     <Key>
       <PropertyRef Name="Id" />
@@ -127,6 +151,8 @@
     <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Claim" EntityType="Self.Claim" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClaimState" EntityType="Self.ClaimState" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GlobalParameters" EntityType="Self.GlobalParameters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MetaDataDictionary" EntityType="Self.MetaDataDictionary" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />

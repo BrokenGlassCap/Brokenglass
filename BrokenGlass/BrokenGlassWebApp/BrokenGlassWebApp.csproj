@@ -240,6 +240,7 @@
     <Compile Include="Controllers\api\ClaimStatesController.cs" />
     <Compile Include="Controllers\api\ServicesController.cs" />
     <Compile Include="Controllers\ClaimStatesDataController.cs" />
+    <Compile Include="Controllers\ClientInfoController.cs" />
     <Compile Include="Controllers\ServicesDataController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Infostracture\EmailService.cs" />
@@ -272,6 +273,8 @@
     <Content Include="Views\AdressesData\Edit.cshtml" />
     <Content Include="Views\AdressesData\Index.cshtml" />
     <Content Include="Views\Test\UploadClaimFile.cshtml" />
+    <Content Include="Views\ClientInfo\ExpireToken.cshtml" />
+    <Content Include="Views\ClientInfo\SuccesConfirmationAccount.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

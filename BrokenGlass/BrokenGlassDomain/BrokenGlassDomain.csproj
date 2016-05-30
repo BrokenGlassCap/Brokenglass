@@ -83,6 +83,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\BrokenGlassWebApp\bin\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\BrokenGlassWebApp\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -124,6 +130,12 @@
     <Compile Include="Entities\UserFactory.cs" />
     <Compile Include="Entities\UserRegistrationModel.cs" />
     <Compile Include="Exceptions\IdentityUserCreateException.cs" />
+    <Compile Include="GlobalParameters.cs">
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaDataDictionary.cs">
+      <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Photo.cs">
       <DependentUpon>BrokenGlassEDM.tt</DependentUpon>
     </Compile>

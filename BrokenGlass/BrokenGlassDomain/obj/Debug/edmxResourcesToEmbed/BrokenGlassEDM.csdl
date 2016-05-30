@@ -172,5 +172,31 @@
       <End Role="Claim" EntitySet="Claim" />
       <End Role="Photo" EntitySet="Photo" />
     </AssociationSet>
+    <EntitySet Name="GlobalParameters" EntityType="BROKEN_GLASSModel.GlobalParameters" />
+    <EntitySet Name="MetaDataDictionary" EntityType="BROKEN_GLASSModel.MetaDataDictionary" />
   </EntityContainer>
+  <EntityType Name="GlobalParameters">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MetaDataDictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

@@ -14,7 +14,6 @@ namespace BrokenGlassWebApp.Controllers.api
 {
     public class AccountController : ApiController
     {
-        //TODO: Сделать откат регистрации если в последующих шагах ошибки.
         [HttpPost]
         [Route("Registration", Name = "RegistrationRoute")]
         public async Task<HttpResponseMessage> Registration(UserRegistrationModel model)
@@ -76,7 +75,7 @@ namespace BrokenGlassWebApp.Controllers.api
 
         [Route("ConfirmEmail",Name = "ConfirmEmailRoute")]
         [HttpGet]
-        public async Task<HttpResponseMessage> ConfirmEmail(string userId, string token)
+        public async Task<IHttpActionResult> ConfirmEmail(string userId, string token)
         {
             try
             {
@@ -85,19 +84,42 @@ namespace BrokenGlassWebApp.Controllers.api
                     var identityResult = await user.ConfirmEmailAsync(userId, token);
                     if (!identityResult.Succeeded)
                     {
+                        if(identityResult.Errors.Contains("Invalid token."))
+                        {
+                            await ResendUserConfiramtionMessage(userId, user);
+                            return Redirect(new Uri(Url.Content("~/ClientInfo/ExpireToken")));
+                        }
+
                         var errors = user.CreateStringErrorByIdentityResultErrors(identityResult);
                         ApplicationLogger.Instance.Error($"В момент подтверждения аккаунта  c ID {userId} произошли ошибки на серер авторизации Web Api: {errors}");
-                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, errors);
+                        
+                        return BadRequest(errors);
                     }
-
-                    return Request.CreateResponse(HttpStatusCode.OK);
+                    return Redirect(new Uri(Url.Content("~/ClientInfo/SuccesConfirmationAccount")));
                 }
             }
             catch (Exception ex)
             {
                 ApplicationLogger.Instance.Error($"В момент подтверждения аккаунта  c ID {userId} на сервере возникло исключение: {ex.Message} {ex.StackTrace}");
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                return BadRequest(ex.Message);
             }
         }
+
+
+        private async Task ResendUserConfiramtionMessage(string userId, UserFactory user)
+        {
+            var userIdentity = await user.FindIdentityUserByIdAsync(userId);
+            if (userIdentity == null)
+            {
+                throw new Exception("Попытка подвтеждения незарегестрированного аккаунта");
+            }
+            else if (userIdentity.EmailConfirmed)
+            {
+                throw new Exception($"Попытка подвтеждения уже подвержденного аккаунта {userIdentity.UserName}");
+            }
+
+            await SendConfirmationMessageToUser(user, userIdentity);
+        }
+
     }
 }
