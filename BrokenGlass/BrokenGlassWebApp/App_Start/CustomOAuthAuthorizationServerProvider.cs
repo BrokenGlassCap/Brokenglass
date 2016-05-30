@@ -48,7 +48,6 @@ namespace BrokenGlassWebApp.App_Start
                     }
                     ClaimsIdentity claim = await userFactory.CreateIdentityAsync(user, DefaultAuthenticationTypes.ExternalBearer);
                     context.Validated(claim);
-
                 }
                 catch (Exception ex)
                 {

@@ -1,4 +1,6 @@
-﻿using BrokenGlassDomain.Entities;
+﻿using BrokenGlassDomain.DataLayer;
+using BrokenGlassDomain.Entities;
+using BrokenGlassDomain.ServiceUtils;
 using BrokenGlassWebApp.Infostracture;
 using System;
 using System.Collections.Generic;
@@ -26,15 +28,8 @@ namespace BrokenGlassWebApp.Controllers.api
             {
                 using (var userContext = UserFactory.GetUser())
                 {
-                   var identityUser = await userContext.RegistrationAsync(model);
-                   var emailService = new EmailService();
-
-                    var token = await userContext.GenerateEmailConfirmationTokenAsync(identityUser.Id);
-
-                    var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = identityUser.Id, token = token }));
-                    var msgBody = $"Подтвердите свой аккаунт по сслыке <a href=\"{callbackUrl}\">Перейти</a>";
-
-                    await emailService.SendMessageAsync(identityUser.UserName, "Confirm Account", msgBody);
+                    var identityUser = await userContext.RegistrationAsync(model);
+                    await SendConfirmationMessageToUser(userContext, identityUser);
                 }
             }
             catch (Exception ex)
@@ -42,10 +37,42 @@ namespace BrokenGlassWebApp.Controllers.api
                 ApplicationLogger.Instance.Error($"{ex.Message} {ex.StackTrace}");
                 return Request.CreateErrorResponse(HttpStatusCode.Conflict, ex);
             }
-
             return new HttpResponseMessage(HttpStatusCode.Created);
-            
-        } 
+        }
+
+        private async Task SendConfirmationMessageToUser(UserFactory userContext, Microsoft.AspNet.Identity.EntityFramework.IdentityUser identityUser)
+        {
+            string clientTextMessage = await ReturnConfirmationMessageFromMetaData();
+
+            var emailService = new EmailService();
+            var token = await userContext.GenerateEmailConfirmationTokenAsync(identityUser.Id);
+            var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = identityUser.Id, token = token }));
+            var msgBody = $"{clientTextMessage} <a href=\"{callbackUrl}\">Перейти</a>";
+
+            await emailService.SendMessageAsync(identityUser.UserName, "Confirm Account", msgBody);
+        }
+
+        private static async Task<string> ReturnConfirmationMessageFromMetaData()
+        {
+            string clientTextMessage = null;
+            using (var db = NinjectService.Instance.GetService<IUnitOfWork>())
+            {
+                try
+                {
+                    var dataCleintMessage = await db.MetaDataDictionaryRepository.FindAsync(f => f.Code == "CONFIRM_MESSAGE_TEXT");
+                    if (dataCleintMessage == null) throw new Exception("Setting CONFIRM_MESSAGE_TEXT is not exist in DataBase.");
+
+                    clientTextMessage = dataCleintMessage.Value;
+                }
+                catch (Exception ex)
+                {
+                    ApplicationLogger.Instance.Error($"{ex.Message} {ex.StackTrace}");
+                    clientTextMessage = "Please, confirm your Account email on this link";
+                }
+            }
+
+            return clientTextMessage;
+        }
 
         [Route("ConfirmEmail",Name = "ConfirmEmailRoute")]
         [HttpGet]

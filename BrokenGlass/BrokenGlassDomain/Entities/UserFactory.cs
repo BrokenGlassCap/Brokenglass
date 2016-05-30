@@ -100,23 +100,24 @@ namespace BrokenGlassDomain.Entities
 
         public async Task<string> GenerateEmailConfirmationTokenAsync(string userId)
         {
-            var factoryOptions = new IdentityFactoryOptions<UserManager<IdentityUser>>();
-            factoryOptions.DataProtectionProvider = new DpapiDataProtectionProvider("BGWebApi");
-
-            m_userManager.UserTokenProvider = new DataProtectorTokenProvider<IdentityUser>(factoryOptions.DataProtectionProvider.Create("ASP.NET Identity"))
-            {
-                TokenLifespan = TimeSpan.FromHours(6)
-            };
-
+            m_userManager.UserTokenProvider = CreateUserTokenProvider();
             return await m_userManager.GenerateEmailConfirmationTokenAsync(userId);
         }
 
         public async Task<IdentityResult> ConfirmEmailAsync(string userId, string token)
         {
+            m_userManager.UserTokenProvider = CreateUserTokenProvider();
+            return await m_userManager.ConfirmEmailAsync(userId, token);
+        }
+
+        private DataProtectorTokenProvider<IdentityUser> CreateUserTokenProvider()
+        {
             var factoryOptions = new IdentityFactoryOptions<UserManager<IdentityUser>>();
             factoryOptions.DataProtectionProvider = new DpapiDataProtectionProvider("BGWebApi");
-            m_userManager.UserTokenProvider = new DataProtectorTokenProvider<IdentityUser>(factoryOptions.DataProtectionProvider.Create("ASP.NET Identity"));
-            return await m_userManager.ConfirmEmailAsync(userId, token);
+            return new DataProtectorTokenProvider<IdentityUser>(factoryOptions.DataProtectionProvider.Create("ASP.NET Identity"))
+            {
+                TokenLifespan = TimeSpan.FromHours(6)
+            };
         }
 
         public string CreateStringErrorByIdentityResultErrors(IdentityResult identityResult)
