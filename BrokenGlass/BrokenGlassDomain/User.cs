@@ -27,6 +27,7 @@ namespace BrokenGlassDomain
         public byte[] Avatar { get; set; }
         public Nullable<System.DateTime> UpdateAt { get; set; }
         public string UpdateBy { get; set; }
+        public string IdentityUserId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Claim> Claim { get; set; }

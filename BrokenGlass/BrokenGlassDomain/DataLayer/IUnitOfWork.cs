@@ -14,6 +14,8 @@ namespace BrokenGlassDomain.DataLayer
         IRepository<Photo> PhotoRepository { get;}
         IRepository<Service> ServiceRepository { get;}
         IRepository<User> UserRepository { get;}
+        IRepository<GlobalParameters> GlobalParametersRepository { get; }
+        IRepository<MetaDataDictionary> MetaDataDictionaryRepository { get; }
         void Save();
         Task SaveAsync();
     }

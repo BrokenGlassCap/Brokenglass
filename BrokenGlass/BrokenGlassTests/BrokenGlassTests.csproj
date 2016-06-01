@@ -35,6 +35,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\BrokenGlassWebApp\bin\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BrokenGlassWebApp\bin\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\BrokenGlassWebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\BrokenGlassWebApp\bin\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
@@ -73,9 +86,11 @@
     <Compile Include="AssertUtils\AssertUtils.cs" />
     <Compile Include="AssertUtils\TestUtils.cs" />
     <Compile Include="Domain\NinjectServiceTest.cs" />
+    <Compile Include="Domain\UserFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebApi\AdressesApiTest.cs" />
     <Compile Include="WebApi\ClaimsApiTest.cs" />
+    <Compile Include="WebApi\EmailServiceTest.cs" />
     <Compile Include="WebApi\ServicesApiTest.cs" />
     <Compile Include="WebApi\StateClaimTest.cs" />
   </ItemGroup>

@@ -31,5 +31,7 @@ namespace BrokenGlassDomain
         public virtual DbSet<Photo> Photo { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<GlobalParameters> GlobalParameters { get; set; }
+        public virtual DbSet<MetaDataDictionary> MetaDataDictionary { get; set; }
     }
 }

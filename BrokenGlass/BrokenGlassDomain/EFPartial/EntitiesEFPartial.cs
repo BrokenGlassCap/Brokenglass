@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BrokenGlassDomain
 {
@@ -80,9 +81,9 @@ namespace BrokenGlassDomain
             [DataMember]
             public string Location { get; set; }
             [DataMember]
-            public decimal Latitude { get; set; }
+            public double Latitude { get; set; }
             [DataMember]
-            public decimal Longitude { get; set; }
+            public double Longitude { get; set; }
             [DataMember]
             public Nullable<System.DateTime> UpdateAt { get; set; }
             [DataMember]
@@ -128,7 +129,60 @@ namespace BrokenGlassDomain
             [DataMember]
             public bool HasPhotos { get; set; }
         }
+
     }
+
+    [MetadataType(typeof(UserMetadata))]
+    [DataContract]
+    public partial class User
+    {
+        internal class UserMetadata
+        {
+            [DataMember]
+            public int Id { get; set; }
+            [DataMember]
+            public string FirstName { get; set; }
+            [DataMember]
+            public string LastName { get; set; }
+            [DataMember]
+            public string Email { get; set; }
+            [DataMember]
+            public byte[] Avatar { get; set; }
+            [DataMember]
+            public Nullable<System.DateTime> UpdateAt { get; set; }
+            [DataMember]
+            public string UpdateBy { get; set; }
+            public string IdentityUserId { get; set; }
+            public virtual ICollection<Claim> Claim { get; set; }
+
+        }
+    }
+
+    [MetadataType(typeof(PhotoMetadata))]
+    [DataContract]
+    public partial class Photo
+    {
+        internal class PhotoMetadata
+        {
+            [DataMember]
+            public int Id { get; set; }
+            [DataMember]
+            public byte[] FullPic { get; set; }
+            [DataMember]
+            public byte[] ThumnailPic { get; set; }
+            [DataMember]
+            public int ClaimId { get; set; }
+            [DataMember]
+            public Nullable<System.DateTime> UpdateAt { get; set; }
+            [DataMember]
+            public string UpdateBy { get; set; }
+
+            public virtual Claim Claim { get; set; }
+
+        }
+    }
+
+
 
 
 }

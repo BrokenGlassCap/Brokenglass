@@ -11,12 +11,12 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OsbCode" Type="int" Nullable="false" />
-          <Property Name="OsbName" Type="nvarchar" MaxLength="200" />
-          <Property Name="City" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="AdressName" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Location" Type="nvarchar" MaxLength="200" />
-          <Property Name="Latitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Longitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OsbName" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AdressName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
           <Property Name="UpdateAt" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
         </EntityType>
@@ -44,6 +44,30 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="UpdateAt" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GlobalParameters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MetaDataDictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Photo">
           <Key>
@@ -78,19 +102,8 @@
           <Property Name="Avatar" Type="varbinary(max)" />
           <Property Name="UpdateAt" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
+          <Property Name="IdentityUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Claim__AdressId__4AB81AF0">
-          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
-          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Adress">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Claim">
-              <PropertyRef Name="AdressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Claim__ClaimStat__4CA06362">
           <End Role="ClaimState" Type="Self.ClaimState" Multiplicity="1" />
           <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
@@ -115,18 +128,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Claim__UserId__4BAC3F29">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Claim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Photo__ClaimId__73BA3083">
           <End Role="Claim" Type="Self.Claim" Multiplicity="1" />
           <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
@@ -143,23 +144,17 @@
           <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Claim" EntityType="Self.Claim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClaimState" EntityType="Self.ClaimState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GlobalParameters" EntityType="Self.GlobalParameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetaDataDictionary" EntityType="Self.MetaDataDictionary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Claim__AdressId__4AB81AF0" Association="Self.FK__Claim__AdressId__4AB81AF0">
-            <End Role="Adress" EntitySet="Adress" />
-            <End Role="Claim" EntitySet="Claim" />
-          </AssociationSet>
           <AssociationSet Name="FK__Claim__ClaimStat__4CA06362" Association="Self.FK__Claim__ClaimStat__4CA06362">
             <End Role="ClaimState" EntitySet="ClaimState" />
             <End Role="Claim" EntitySet="Claim" />
           </AssociationSet>
           <AssociationSet Name="FK__Claim__ServiceId__49C3F6B7" Association="Self.FK__Claim__ServiceId__49C3F6B7">
             <End Role="Service" EntitySet="Service" />
-            <End Role="Claim" EntitySet="Claim" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Claim__UserId__4BAC3F29" Association="Self.FK__Claim__UserId__4BAC3F29">
-            <End Role="User" EntitySet="User" />
             <End Role="Claim" EntitySet="Claim" />
           </AssociationSet>
           <AssociationSet Name="FK__Photo__ClaimId__73BA3083" Association="Self.FK__Photo__ClaimId__73BA3083">
@@ -177,12 +172,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OsbCode" Type="Int32" Nullable="false" />
-          <Property Name="OsbName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AdressName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OsbName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdressName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__AdressId__4AB81AF0" FromRole="Adress" ToRole="Claim" />
@@ -254,6 +249,7 @@
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__UserId__4BAC3F29" FromRole="User" ToRole="Claim" />
+          <Property Name="IdentityUserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__Claim__AdressId__4AB81AF0">
           <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
@@ -342,7 +338,33 @@
             <End Role="Claim" EntitySet="Claim" />
             <End Role="Photo" EntitySet="Photo" />
           </AssociationSet>
+          <EntitySet Name="GlobalParameters" EntityType="BROKEN_GLASSModel.GlobalParameters" />
+          <EntitySet Name="MetaDataDictionary" EntityType="BROKEN_GLASSModel.MetaDataDictionary" />
         </EntityContainer>
+        <EntityType Name="GlobalParameters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MetaDataDictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -419,6 +441,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="BROKEN_GLASSModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdentityUserId" ColumnName="IdentityUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -426,6 +449,32 @@
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
                 <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
                 <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GlobalParameters">
+            <EntityTypeMapping TypeName="BROKEN_GLASSModel.GlobalParameters">
+              <MappingFragment StoreEntitySet="GlobalParameters">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetaDataDictionary">
+            <EntityTypeMapping TypeName="BROKEN_GLASSModel.MetaDataDictionary">
+              <MappingFragment StoreEntitySet="MetaDataDictionary">
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

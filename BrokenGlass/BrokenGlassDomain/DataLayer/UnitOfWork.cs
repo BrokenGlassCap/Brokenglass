@@ -16,6 +16,32 @@ namespace BrokenGlassDomain.DataLayer
         IRepository<Photo> m_photo;
         IRepository<Service> m_service;
         IRepository<User> m_user;
+        IRepository<GlobalParameters> m_globalParams;
+        IRepository<MetaDataDictionary> m_metaData;
+
+        public IRepository<MetaDataDictionary> MetaDataDictionaryRepository
+        {
+            get
+            {
+                if (m_metaData == null)
+                {
+                    m_metaData = new GenericRepository<MetaDataDictionary>(m_context);
+                }
+                return m_metaData;
+            }
+        }
+
+        public IRepository<GlobalParameters> GlobalParametersRepository
+        {
+            get
+            {
+                if (m_globalParams == null)
+                {
+                    m_globalParams = new GenericRepository<GlobalParameters>(m_context);
+                }
+                return m_globalParams;
+            }
+        }
 
         public IRepository<Adress> AdressRepository
         {

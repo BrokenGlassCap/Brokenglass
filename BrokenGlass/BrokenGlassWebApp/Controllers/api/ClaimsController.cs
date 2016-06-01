@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace BrokenGlassWebApp.Controllers.api
 {
+    [Authorize]
     public class ClaimsController : ApiController
     {
         private IUnitOfWork m_db;
@@ -71,7 +72,7 @@ namespace BrokenGlassWebApp.Controllers.api
 
         public async Task<Claim> GetClaimById(int id)
         {
-            var claim = await m_db.ClaimRepository.GetByIdAsync(id);
+            var claim = await m_db.ClaimRepository.FindAsync(f => f.Id == id);
             if (claim == null)
             {
                 ApplicationLogger.Instance.Trace(string.Format("Claims/GET: Claim was not found with specified ID: {0}", id));
@@ -79,8 +80,36 @@ namespace BrokenGlassWebApp.Controllers.api
             }
             claim.HasPhotos = claim.Photo.Any();
             return claim;
-
         }
+
+        [Route("api/Claims/GetPrivew",Name = "GetClaimPreviewName")]
+        public async Task<Claim> GetClaimPreview(int id)
+        {
+            var claim = await m_db.ClaimRepository.FindAsync(f => f.Id == id);
+            if (claim == null)
+            {
+                ApplicationLogger.Instance.Trace(string.Format("Claims/GET: Claim was not found with specified ID: {0}", id));
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            claim.HasPhotos = claim.Photo.Any();
+            claim.Photo.ToList().ForEach(f => f.FullPic = null);
+            return claim;
+        }
+
+        [Route("api/Claims/GetFullPhoto", Name = "GetFullPhotoName")]
+        public async Task<Photo> GetFullPhotoById(int id)
+        {
+            var photo = await m_db.PhotoRepository.FindAsync(f => f.Id == id);
+            if (photo == null)
+            {
+                ApplicationLogger.Instance.Trace(string.Format("Photo/GET: Photo was not found with specified ID: {0}", id));
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+
+            photo.ThumnailPic = null;
+            return photo;
+        }
+
         [HttpPost]
         public async Task<HttpResponseMessage> PostClaim(Claim claim)
         {
@@ -101,6 +130,7 @@ namespace BrokenGlassWebApp.Controllers.api
 
                 SetNullClaimForeignEntities(claim);
                 claim.CreateAt = DateTime.UtcNow;
+                claim.UpdateAt = DateTime.UtcNow;
                 claim.ClaimStateId = state.Id;
 
                 m_db.ClaimRepository.Insert(claim);

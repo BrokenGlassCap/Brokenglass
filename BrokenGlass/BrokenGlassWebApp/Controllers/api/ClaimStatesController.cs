@@ -11,6 +11,7 @@ using System.Web.Http;
 
 namespace BrokenGlassWebApp.Controllers.api
 {
+    [Authorize]
     public class ClaimStatesController : ApiController
     {
         private IUnitOfWork db;
