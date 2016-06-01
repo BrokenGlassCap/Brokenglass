@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BrokenGlassWebApp.Controllers.api
 {
-    [Authorize]
+    //[Authorize]
     public class ClaimsController : ApiController
     {
         private IUnitOfWork m_db;

@@ -123,6 +123,7 @@ namespace BrokenGlassDomain
             public virtual Adress Adress { get; set; }
             public virtual ClaimState ClaimState { get; set; }
             public virtual Service Service { get; set; }
+            [DataMember]
             public virtual User User { get; set; }
             [DataMember]
             public virtual ICollection<Photo> Photo { get; set; }
