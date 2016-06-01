@@ -1,0 +1,10 @@
+2016-06-01 15:35:06.7365 TRACE Claims/GET: request had requested Claims object with non-existen UserId.
+2016-06-01 15:35:06.8085 TRACE Claims/GET: User was not found with specified Email: WrongEmailt@mail.ru
+2016-06-01 15:35:06.8485 TRACE Claims/GET: Claim was not found with specified ID: 123
+2016-06-01 15:35:06.8785 TRACE Photo/GET: Photo was not found with specified ID: 123
+2016-06-01 15:35:06.8875 TRACE Claims/GET: Claim was not found with specified ID: -1
+2016-06-01 15:35:17.0321 TRACE Service/GET: request had requested Service object with non-existen Code.
+2016-06-01 15:35:17.0461 TRACE Service/GET: request had requested Service object with non-existen Id.
+2016-06-01 15:35:17.1211 TRACE ClaimState/GET: request had requested ClaimState object with non-existen Code.
+2016-06-01 15:35:17.1211 TRACE ClaimState/GET: request had requested ClaimState object with non-existen ID.
+2016-06-01 15:35:17.4041 TRACE Adress/GET: request had requested Adress object with non-existen Id.

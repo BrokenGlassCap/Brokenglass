@@ -50,3 +50,4 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\bin\Release\ru\S
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\bin\Release\ru\System.Web.WebPages.Deployment.resources.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\obj\Release\BrokenGlassDomain.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\obj\Release\BrokenGlassDomain.pdb
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\obj\Release\BrokenGlassDomain.csprojResolveAssemblyReference.cache
