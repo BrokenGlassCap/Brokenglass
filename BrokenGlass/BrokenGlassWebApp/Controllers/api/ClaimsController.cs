@@ -82,7 +82,7 @@ namespace BrokenGlassWebApp.Controllers.api
             return claim;
         }
 
-        [Route("api/Claims/GetPrivew",Name = "GetClaimPreviewName")]
+        [Route("api/Claims/GetPreview",Name = "GetClaimPreviewName")]
         public async Task<Claim> GetClaimPreview(int id)
         {
             var claim = await m_db.ClaimRepository.FindAsync(f => f.Id == id);
