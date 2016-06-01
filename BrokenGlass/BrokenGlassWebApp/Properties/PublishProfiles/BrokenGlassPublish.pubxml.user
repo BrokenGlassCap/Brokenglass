@@ -82,10 +82,10 @@
       <publishTime>06/01/2016 15:16:30</publishTime>
     </File>
     <File Include="bin/BrokenGlassDomain.dll">
-      <publishTime>06/01/2016 15:34:49</publishTime>
+      <publishTime>06/01/2016 16:44:38</publishTime>
     </File>
     <File Include="bin/BrokenGlassWebApp.dll">
-      <publishTime>06/01/2016 15:34:53</publishTime>
+      <publishTime>06/01/2016 16:44:42</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/01/2016 15:16:30</publishTime>
