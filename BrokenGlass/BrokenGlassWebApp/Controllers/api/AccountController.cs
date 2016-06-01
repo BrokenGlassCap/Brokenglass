@@ -12,6 +12,7 @@ using System.Web.Http;
 
 namespace BrokenGlassWebApp.Controllers.api
 {
+    [AllowAnonymous]
     public class AccountController : ApiController
     {
         [HttpPost]

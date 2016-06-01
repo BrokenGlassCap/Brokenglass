@@ -26,8 +26,8 @@ namespace BrokenGlassDomain
         public string City { get; set; }
         public string AdressName { get; set; }
         public string Location { get; set; }
-        public decimal Latitude { get; set; }
-        public decimal Longitude { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
         public Nullable<System.DateTime> UpdateAt { get; set; }
         public string UpdateBy { get; set; }
     

@@ -25,8 +25,10 @@ namespace BrokenGlassTests.WebApi
         private Mock<IRepository<Claim>> mockGenricRepository;
         private List<Claim> stubClaims;
         private List<User> stubUsers;
+        private List<Photo> stubPhoto;
         private TestContext testContextInstance;
         private Mock<IRepository<User>> mockUsersRepository;
+        private Mock<IRepository<Photo>> mockPhotoRepository;
 
         public ClaimsApiTest()
         {
@@ -38,12 +40,16 @@ namespace BrokenGlassTests.WebApi
 
             SetupClaimObject();
             SetupUnitOfWorkMockObject();
+
+            InitStubPhotoObject();
+            InitMockPhotoObjects();
         }
 
         private void SetupUnitOfWorkMockObject()
         {
             mockUnitOfWork.Setup(p => p.ClaimRepository).Returns(() => mockGenricRepository.Object);
             mockUnitOfWork.Setup(p => p.UserRepository).Returns(() => mockUsersRepository.Object);
+            mockUnitOfWork.Setup(p => p.PhotoRepository).Returns(() => mockPhotoRepository.Object);
         }
 
         private void SetupClaimObject()
@@ -91,6 +97,49 @@ namespace BrokenGlassTests.WebApi
             mockUnitOfWork = new Mock<IUnitOfWork>();
             mockGenricRepository = new Mock<IRepository<Claim>>();
             mockUsersRepository = new Mock<IRepository<User>>();
+            mockPhotoRepository = new Mock<IRepository<Photo>>();
+        }
+        private void InitMockPhotoObjects()
+        {
+            mockPhotoRepository.Setup(m => m.GetAll()).Returns(() => stubPhoto);
+            mockPhotoRepository.Setup(p => p.GetAllAsync()).Returns(() => Task.Factory.StartNew(() => (IEnumerable<Photo>)stubPhoto));
+
+            mockPhotoRepository.Setup(p => p.FindAsync(It.IsAny<Expression<Func<Photo, bool>>>()))
+                           .Returns<Expression<Func<Photo, bool>>>(r =>
+                           {
+                               return Task.Factory.StartNew(() => stubPhoto.AsQueryable<Photo>().SingleOrDefault(r));
+                           });
+            mockPhotoRepository.Setup(p => p.FindAllAsync(It.IsAny<Expression<Func<Photo, bool>>>()))
+                                .Returns<Expression<Func<Photo, bool>>>(r =>
+                                {
+                                    return Task.Factory.StartNew(() => stubPhoto.AsQueryable<Photo>().Where(r).AsEnumerable());
+                                });
+        }
+
+
+        private void InitStubPhotoObject()
+        {
+            stubPhoto = new List<Photo>()
+            {
+                new Photo()
+                {
+                    Id = 1,
+                    FullPic = new byte[5] { 1,2,34,5,6},
+                    ThumnailPic = new byte[5] { 1,2,34,5,6}
+                },
+                new Photo()
+                {
+                    Id = 2,
+                    FullPic = new byte[5] { 1,2,34,5,6},
+                    ThumnailPic = new byte[5] { 1,2,34,5,6}
+                },
+                  new Photo()
+                {
+                    Id = 3,
+                    FullPic = new byte[5] { 1,2,34,5,6},
+                    ThumnailPic = new byte[5] { 1,2,34,5,6}
+                }
+            };
         }
 
         private void InitStubUsersObject()
@@ -120,15 +169,15 @@ namespace BrokenGlassTests.WebApi
             stubClaims = new List<Claim>()
             {
                 new Claim() {Id = 1, AdressId = 1, ClaimStateId = 1, ServiceId = 1, CreateAt = DateTime.Now, UserId = 1, Photo = new List<Photo>() {
-                    new Photo() {ClaimId =1, UpdateAt = DateTime.UtcNow } } },
+                    new Photo() {ClaimId =1, UpdateAt = DateTime.UtcNow, FullPic = new byte[5] {22,43,53,65,43} } } },
                 new Claim() {Id = 2, AdressId = 2, ClaimStateId = 2, ServiceId = 2, CreateAt = DateTime.Now, UserId = 2, Photo = new List<Photo>() {
-                    new Photo() {ClaimId =2, UpdateAt = DateTime.UtcNow } } },
+                    new Photo() {ClaimId =2, UpdateAt = DateTime.UtcNow, FullPic = new byte[5] {22,43,53,65,43} } } },
                 new Claim() {Id = 3, AdressId = 3, ClaimStateId = 3, ServiceId = 3, CreateAt = DateTime.Now, UserId = 3, Photo = new List<Photo>() {
-                    new Photo() {ClaimId =3, UpdateAt = DateTime.UtcNow } }  },
+                    new Photo() {ClaimId =3, UpdateAt = DateTime.UtcNow, FullPic = new byte[5] {22,43,53,65,43} } }  },
                 new Claim() {Id = 4, AdressId = 4, ClaimStateId = 4, ServiceId = 4, CreateAt = DateTime.Now, UserId = 4, Photo = new List<Photo>() {
-                    new Photo() {ClaimId =1, UpdateAt = DateTime.UtcNow } } },
+                    new Photo() {ClaimId =1, UpdateAt = DateTime.UtcNow, FullPic = new byte[5] {22,43,53,65,43} } } },
                 new Claim() {Id = 5, AdressId = 5, ClaimStateId = 5, ServiceId = 5, CreateAt = DateTime.Now, UserId = 1, Photo = new List<Photo>() {
-                    new Photo() {ClaimId =1, UpdateAt = DateTime.UtcNow } }}
+                    new Photo() {ClaimId =1, UpdateAt = DateTime.UtcNow, FullPic = new byte[5] {22,43,53,65,43} } }}
             };
         }
 
@@ -232,6 +281,55 @@ namespace BrokenGlassTests.WebApi
 
             Assert.AreEqual(expectedObject, stubClaims.Find(f => f.Id == claimId));
 
+        }
+
+        [TestMethod]
+        public async Task GetClaimPreviewd()
+        {
+            var claimId = 1;
+            var controller = new ClaimsController(mockUnitOfWork.Object);
+
+            var expectedObject = await controller.GetClaimPreview(claimId);
+            var actualObject = stubClaims.Find(f => f.Id == claimId);
+            Assert.IsNull(actualObject.Photo.First().FullPic);
+            Assert.AreEqual(expectedObject, actualObject);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpResponseException))]
+        public async Task GetClaimPreviewdException()
+        {
+            var claimId = 123;
+            var controller = new ClaimsController(mockUnitOfWork.Object);
+
+            var expectedObject = await controller.GetClaimPreview(claimId);
+            var actualObject = stubClaims.Find(f => f.Id == claimId);
+
+
+        }
+
+        [TestMethod]
+        public async Task GetFullPhotoById()
+        {
+            var photoId = 1;
+            var controller = new ClaimsController(mockUnitOfWork.Object);
+
+            var expectedObject = await controller.GetFullPhotoById(photoId);
+            var actualObject = stubPhoto.Find(p => p.Id == photoId);
+
+            Assert.AreEqual(expectedObject, actualObject);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(HttpResponseException))]
+        public async Task GetFullPhotoByIdException()
+        {
+            var photoId = 123;
+            var controller = new ClaimsController(mockUnitOfWork.Object);
+
+            var expectedObject = await controller.GetFullPhotoById(photoId);
+            var actualObject = stubPhoto.Find(p => p.Id == photoId);
         }
 
         [TestMethod]

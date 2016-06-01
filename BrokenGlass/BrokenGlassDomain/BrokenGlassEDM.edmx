@@ -11,12 +11,12 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OsbCode" Type="int" Nullable="false" />
-          <Property Name="OsbName" Type="nvarchar" MaxLength="200" />
-          <Property Name="City" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="AdressName" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Location" Type="nvarchar" MaxLength="200" />
-          <Property Name="Latitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Longitude" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OsbName" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AdressName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
           <Property Name="UpdateAt" Type="datetime" />
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="100" />
         </EntityType>
@@ -104,18 +104,6 @@
           <Property Name="UpdateBy" Type="nvarchar" MaxLength="200" />
           <Property Name="IdentityUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Claim__AdressId__4AB81AF0">
-          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
-          <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Adress">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Claim">
-              <PropertyRef Name="AdressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Claim__ClaimStat__4CA06362">
           <End Role="ClaimState" Type="Self.ClaimState" Multiplicity="1" />
           <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
@@ -161,10 +149,6 @@
           <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Claim__AdressId__4AB81AF0" Association="Self.FK__Claim__AdressId__4AB81AF0">
-            <End Role="Adress" EntitySet="Adress" />
-            <End Role="Claim" EntitySet="Claim" />
-          </AssociationSet>
           <AssociationSet Name="FK__Claim__ClaimStat__4CA06362" Association="Self.FK__Claim__ClaimStat__4CA06362">
             <End Role="ClaimState" EntitySet="ClaimState" />
             <End Role="Claim" EntitySet="Claim" />
@@ -188,12 +172,12 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OsbCode" Type="Int32" Nullable="false" />
-          <Property Name="OsbName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AdressName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Latitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Longitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="OsbName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdressName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
           <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__AdressId__4AB81AF0" FromRole="Adress" ToRole="Claim" />

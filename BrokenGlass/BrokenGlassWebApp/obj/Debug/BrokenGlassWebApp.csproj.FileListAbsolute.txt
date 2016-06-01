@@ -168,3 +168,8 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\System.Web.H
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\Microsoft.Owin.Cors.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\System.Web.Cors.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\Microsoft.Owin.Cors.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\Antlr3.Runtime.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\System.Web.Optimization.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\WebGrease.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\Antlr3.Runtime.pdb
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\bin\System.Web.Optimization.xml

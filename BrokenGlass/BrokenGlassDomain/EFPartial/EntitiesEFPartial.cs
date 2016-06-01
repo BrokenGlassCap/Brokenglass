@@ -81,9 +81,9 @@ namespace BrokenGlassDomain
             [DataMember]
             public string Location { get; set; }
             [DataMember]
-            public decimal Latitude { get; set; }
+            public double Latitude { get; set; }
             [DataMember]
-            public decimal Longitude { get; set; }
+            public double Longitude { get; set; }
             [DataMember]
             public Nullable<System.DateTime> UpdateAt { get; set; }
             [DataMember]
@@ -123,6 +123,7 @@ namespace BrokenGlassDomain
             public virtual Adress Adress { get; set; }
             public virtual ClaimState ClaimState { get; set; }
             public virtual Service Service { get; set; }
+            [DataMember]
             public virtual User User { get; set; }
             [DataMember]
             public virtual ICollection<Photo> Photo { get; set; }
@@ -132,7 +133,57 @@ namespace BrokenGlassDomain
 
     }
 
-    
+    [MetadataType(typeof(UserMetadata))]
+    [DataContract]
+    public partial class User
+    {
+        internal class UserMetadata
+        {
+            [DataMember]
+            public int Id { get; set; }
+            [DataMember]
+            public string FirstName { get; set; }
+            [DataMember]
+            public string LastName { get; set; }
+            [DataMember]
+            public string Email { get; set; }
+            [DataMember]
+            public byte[] Avatar { get; set; }
+            [DataMember]
+            public Nullable<System.DateTime> UpdateAt { get; set; }
+            [DataMember]
+            public string UpdateBy { get; set; }
+            public string IdentityUserId { get; set; }
+            public virtual ICollection<Claim> Claim { get; set; }
+
+        }
+    }
+
+    [MetadataType(typeof(PhotoMetadata))]
+    [DataContract]
+    public partial class Photo
+    {
+        internal class PhotoMetadata
+        {
+            [DataMember]
+            public int Id { get; set; }
+            [DataMember]
+            public byte[] FullPic { get; set; }
+            [DataMember]
+            public byte[] ThumnailPic { get; set; }
+            [DataMember]
+            public int ClaimId { get; set; }
+            [DataMember]
+            public Nullable<System.DateTime> UpdateAt { get; set; }
+            [DataMember]
+            public string UpdateBy { get; set; }
+
+            public virtual Claim Claim { get; set; }
+
+        }
+    }
+
+
 
 
 }

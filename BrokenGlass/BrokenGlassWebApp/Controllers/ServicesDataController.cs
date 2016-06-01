@@ -10,6 +10,7 @@ using BrokenGlassDomain;
 
 namespace BrokenGlassWebApp.Controllers
 {
+    [Authorize]
     public class ServicesDataController : Controller
     {
         private BROKEN_GLASSEntities db = new BROKEN_GLASSEntities();

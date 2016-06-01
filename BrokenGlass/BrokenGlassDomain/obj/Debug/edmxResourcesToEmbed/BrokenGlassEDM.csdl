@@ -6,12 +6,12 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="OsbCode" Type="Int32" Nullable="false" />
-    <Property Name="OsbName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="AdressName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="Location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Latitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="Longitude" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="OsbName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AdressName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="Double" Nullable="false" />
+    <Property Name="Longitude" Type="Double" Nullable="false" />
     <Property Name="UpdateAt" Type="DateTime" Precision="3" />
     <Property Name="UpdateBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Claim" Relationship="Self.FK__Claim__AdressId__4AB81AF0" FromRole="Adress" ToRole="Claim" />
