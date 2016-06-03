@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -82,13 +83,20 @@ namespace BrokenGlassWebApp.Controllers
         {
             try
             {
+                var photoRange = db.PhotoRepository.GetAll().Where(w => w.ClaimId == id);
+                if (photoRange.Any())
+                {
+                    db.PhotoRepository.DeleteRange(photoRange);
+                }
+                
                 db.ClaimRepository.DeleteById(id);
                 db.Save();
             }
             catch (Exception ex)
             {
-
-                ApplicationLogger.Instance.Error($"Ошибка во время ручного удаления заявки. {ex.Message} {ex.StackTrace}");
+                string innerMessage = string.Empty;
+                if (ex.InnerException != null) innerMessage = ex.InnerException.Message;
+                ApplicationLogger.Instance.Error($"Ошибка во время ручного удаления заявки. {ex.Message} {innerMessage} {ex.StackTrace}");
             }
             
         }
@@ -96,14 +104,41 @@ namespace BrokenGlassWebApp.Controllers
         public ActionResult Edit(int id)
         {
             var model = db.ClaimRepository.GetById(id);
+            ViewBag.StateDropDown = from s in db.ClaimStateRepository.GetAll()
+                                    select new SelectListItem()
+                                    {
+                                        Text = s.Name,
+                                        Value = s.Id.ToString()
+                                    };
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Edit(Claim model)
         {
+            var claim = db.ClaimRepository.GetById(model.Id);
+            if (claim == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            claim.ClaimStateId = model.ClaimStateId;
+            claim.Solution = model.Solution;
+            db.ClaimRepository.Update(claim);
+            db.Save();
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult GetPhoto(int id)
+        {
+            var photo = db.PhotoRepository.GetById(id);
+            if (photo == null || photo.FullPic == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return File(photo.FullPic, "image/jpg");
         }
 
         protected override void Dispose(bool disposing)

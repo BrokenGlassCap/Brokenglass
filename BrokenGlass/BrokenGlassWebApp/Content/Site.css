@@ -45,4 +45,18 @@ a {
     color: #ed702b !important;
 }
 
+#claim-edit-form-left >.row{
+    margin-top: 10px;
+}
+
+.text-area-custome{
+    max-width: 100%;
+    width: 100% !important;
+    height: 200px !important;
+}
+
+.margin-top-20-px{
+    margin-top: 20px;
+}
+
 

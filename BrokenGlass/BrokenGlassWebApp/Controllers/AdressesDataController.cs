@@ -46,7 +46,7 @@ namespace BrokenGlassWebApp.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,OsbCode,OsbName,City,Adress1,Location,Latitude,Longitude,UpdateAt,UpdateBy")] Adress adress)
+        public ActionResult Create([Bind(Include = "Id,OsbCode,OsbName,City,AdressName,Location,Latitude,Longitude,UpdateAt,UpdateBy")] Adress adress)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace BrokenGlassWebApp.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,OsbCode,OsbName,City,Adress1,Location,Latitude,Longitude,UpdateAt,UpdateBy")] Adress adress)
+        public ActionResult Edit([Bind(Include = "Id,OsbCode,OsbName,City,AdressName,Location,Latitude,Longitude,UpdateAt,UpdateBy")] Adress adress)
         {
             if (ModelState.IsValid)
             {

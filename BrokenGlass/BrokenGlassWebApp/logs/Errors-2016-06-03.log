@@ -1,0 +1,75 @@
+2016-06-03 13:30:32.1621 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:34.3762 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:36.8083 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:38.8904 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:40.8996 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:42.5617 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:44.3758 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:49.8721 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:51.8542 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:30:53.6453 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:31:02.0268 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:31:03.9139 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:31:11.9183 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:38:45.1313 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86
+2016-06-03 13:40:21.7838 ERROR Ошибка во время ручного удаления заявки. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении. При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Data.Entity.Internal.InternalContext.SaveChanges()
+   в System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   в System.Data.Entity.DbContext.SaveChanges()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.Save() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 120
+   в BrokenGlassWebApp.Controllers.ClaimDataController.DeleteClaim(Int32 id) в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\ClaimDataController.cs:строка 86

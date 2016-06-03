@@ -3,11 +3,150 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section HeadLinks{
+    <link rel="stylesheet" href="@Url.Content("~//Content/magnific-popup.css")" />
+}
 
-<h2>Edit</h2>
-<div class="container">
-    <div class="row">
 
+    <div class="container">
+    <h3>Заявка ID @Model.Id</h3>
+    @using (Html.BeginForm("Edit"))
+    {
+     @Html.HiddenFor(m => m.Id)
+    <div class="">
+        <div id="claim-edit-form-left" class="col-md-4">
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Дата создания:")
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayTextFor(m => m.CreateAt)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Обратился:")
+                </div>
+                <div class="col-md-8">
+                    <span>@Html.DisplayTextFor(m => m.User.FirstName) @Html.DisplayTextFor(m => m.User.LastName)</span>
+                    <span>@Html.DisplayTextFor(m => m.User.Email)</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Статус:")
+                </div>
+                <div class="col-md-8">
+                   @Html.DropDownListFor(m => m.ClaimStateId, (IEnumerable<SelectListItem>)ViewBag.StateDropDown, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Сервис:")
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayTextFor(m => m.Service.Name)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("ОСБ:")
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayTextFor(m => m.Adress.OsbName)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Локация:")
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayTextFor(m => m.Adress.Location)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Адрес:")
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayTextFor(m => m.Adress.AdressName)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.Label("Широта:")
+                   
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayTextFor(m => m.Adress.Latitude)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                   @Html.Label("Долгота:")
+
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayTextFor(m => m.Adress.Longitude)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-sm btn-info" type="submit">Сохранить</button>
+                </div>
+                <div class="col-md-8">
+                    <a class="btn btn-sm  btn-default" href="@Url.Action("Index")">Отменить</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div id="thumb" class="col-md-12">
+                    @foreach (var p in Model.Photo)
+                    {
+                        <div class="col-sm-2">
+                            <a class="thumbnail" href="@Url.Action("GetPhoto", "ClaimData", new { id = p.Id })">
+                                <img src="@Url.Action("GetPhoto", "ClaimData", new { id = p.Id })" />
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+                <div class="col-md-12 margin-top-20-px">
+                   @Html.Label("Описание проблемы:")
+                </div>
+                <div class="col-md-12">
+                    @Html.DisplayTextFor(m => m.Description)
+                </div>
+
+                <div class="col-md-12 margin-top-20-px">
+                    @Html.Label("Решение:")
+                </div>
+                <div class="col-md-12">
+                    @Html.TextAreaFor(m => m.Solution, new { @class = "form-control text-area-custome" })
+               </div>
+        </div>
     </div>
+    }
 </div>
 
+@section Scripts{
+    <script type="text/javascript" src="@Url.Content("~//Scripts/jquery.magnific-popup.min.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#thumb").magnificPopup({
+                delegate: "a",
+                type: "image",
+                gallery:
+                {
+                    enabled: true
+                }
+            });
+        });
+        
+    </script>
+    }
