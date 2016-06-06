@@ -97,3 +97,5 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\System.
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Cors.xml
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\System.Web.Optimization.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\System.Web.Optimization.xml
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Host.SystemWeb.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml

@@ -22,9 +22,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li><a>ЗАЯВКИ</a></li>
-                    <li><a>СПРАВОЧНИКИ</a></li>
-                    <li><a>ВЫЙТИ</a></li>
+                    <li><a href="@Url.Action("Index","ClaimData")">ЗАЯВКИ</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="DictionaryLink">СПРАВОЧНИКИ</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","ServicesData")">СЕРВИСЫ</a></li>
+                            <li><a href="@Url.Action("Index","ClaimStatesData")">СТАТУСЫ</a></li>
+                            <li><a href="@Url.Action("Index","AdressesData")">АДРЕСА</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Logout","AccountData")">ВЫЙТИ</a></li>
                 </ul>
             </div>
         </div>

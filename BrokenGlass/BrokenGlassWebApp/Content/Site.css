@@ -59,4 +59,14 @@ a {
     margin-top: 20px;
 }
 
+.margin-top-5-px{
+    margin-top: 5px;
+}
+.input-validation-error{
+    border-color:#a94442 !important; 
+}
+
+.field-validation-error{
+    color: #a94442;
+}
 

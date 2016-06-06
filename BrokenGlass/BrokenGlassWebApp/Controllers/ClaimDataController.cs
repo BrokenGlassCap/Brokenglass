@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace BrokenGlassWebApp.Controllers
 {
+    [Authorize(Roles ="ADMIN_BG")]
     public class ClaimDataController : BaseController
     {
         private IUnitOfWork db;

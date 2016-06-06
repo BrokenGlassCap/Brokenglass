@@ -58,7 +58,7 @@ namespace BrokenGlassWebApp.Controllers.api
 
         public async Task<IEnumerable<Service>> Get(DateTime lastUpdateDate)
         {
-            var service = await m_dbRepositories.ServiceRepository.FindAllAsync(f => f.UpdateAt >= lastUpdateDate);
+            var service = await m_dbRepositories.ServiceRepository.FindAllAsync(f => f.UpdateAt > lastUpdateDate);
 
             if (service.Count() == 0)
             {
