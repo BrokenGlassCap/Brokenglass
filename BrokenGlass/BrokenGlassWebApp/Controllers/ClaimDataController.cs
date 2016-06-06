@@ -39,6 +39,7 @@ namespace BrokenGlassWebApp.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public string GetClaim()
         {
             var filterObject = GetFilter();
