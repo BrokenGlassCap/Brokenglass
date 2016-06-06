@@ -82,10 +82,10 @@
       <publishTime>06/01/2016 15:16:30</publishTime>
     </File>
     <File Include="bin/BrokenGlassDomain.dll">
-      <publishTime>06/01/2016 16:44:38</publishTime>
+      <publishTime>06/06/2016 17:57:03</publishTime>
     </File>
     <File Include="bin/BrokenGlassWebApp.dll">
-      <publishTime>06/01/2016 16:44:42</publishTime>
+      <publishTime>06/06/2016 17:57:07</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/01/2016 15:16:30</publishTime>
@@ -297,8 +297,23 @@
     <File Include="Content/bootstrap.min.css.map">
       <publishTime>06/01/2016 15:16:30</publishTime>
     </File>
+    <File Include="Content/jsgrid-theme.css">
+      <publishTime>06/02/2016 11:23:56</publishTime>
+    </File>
+    <File Include="Content/jsgrid-theme.min.css">
+      <publishTime>06/02/2016 11:23:56</publishTime>
+    </File>
+    <File Include="Content/jsgrid.css">
+      <publishTime>06/02/2016 11:23:56</publishTime>
+    </File>
+    <File Include="Content/jsgrid.min.css">
+      <publishTime>06/02/2016 11:23:56</publishTime>
+    </File>
+    <File Include="Content/magnific-popup.css">
+      <publishTime>06/03/2016 15:44:48</publishTime>
+    </File>
     <File Include="Content/Site.css">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/06/2016 17:43:54</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>06/01/2016 15:16:30</publishTime>
@@ -333,6 +348,9 @@
     <File Include="scripts/bootstrap.min.js">
       <publishTime>06/01/2016 15:16:30</publishTime>
     </File>
+    <File Include="scripts/dateFormat.js">
+      <publishTime>06/02/2016 16:33:31</publishTime>
+    </File>
     <File Include="scripts/jquery-1.10.2.js">
       <publishTime>05/17/2016 14:04:05</publishTime>
     </File>
@@ -341,6 +359,12 @@
     </File>
     <File Include="scripts/jquery-1.10.2.min.map">
       <publishTime>06/01/2016 15:16:30</publishTime>
+    </File>
+    <File Include="scripts/jquery.magnific-popup.js">
+      <publishTime>06/03/2016 15:44:47</publishTime>
+    </File>
+    <File Include="scripts/jquery.magnific-popup.min.js">
+      <publishTime>06/03/2016 15:44:48</publishTime>
     </File>
     <File Include="scripts/jquery.validate.js">
       <publishTime>05/17/2016 14:04:07</publishTime>
@@ -354,26 +378,38 @@
     <File Include="scripts/jquery.validate.unobtrusive.min.js">
       <publishTime>05/17/2016 14:04:07</publishTime>
     </File>
+    <File Include="scripts/jsgrid.js">
+      <publishTime>06/02/2016 11:23:23</publishTime>
+    </File>
+    <File Include="scripts/jsgrid.min.js">
+      <publishTime>06/02/2016 11:23:23</publishTime>
+    </File>
     <File Include="scripts/modernizr-2.6.2.js">
       <publishTime>05/17/2016 14:04:08</publishTime>
     </File>
+    <File Include="Views/AccountData/Login.cshtml">
+      <publishTime>06/06/2016 17:49:45</publishTime>
+    </File>
     <File Include="Views/AdressesData/Create.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/03/2016 13:32:52</publishTime>
     </File>
     <File Include="Views/AdressesData/Delete.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/03/2016 13:32:53</publishTime>
     </File>
     <File Include="Views/AdressesData/Details.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/03/2016 13:32:53</publishTime>
     </File>
     <File Include="Views/AdressesData/Edit.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/03/2016 13:32:53</publishTime>
     </File>
     <File Include="Views/AdressesData/Index.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/06/2016 17:52:01</publishTime>
+    </File>
+    <File Include="Views/ClaimData/Edit.cshtml">
+      <publishTime>06/03/2016 16:59:42</publishTime>
     </File>
     <File Include="Views/ClaimData/Index.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/03/2016 13:27:19</publishTime>
     </File>
     <File Include="Views/ClaimStatesData/Create.cshtml">
       <publishTime>06/01/2016 15:16:30</publishTime>
@@ -388,7 +424,7 @@
       <publishTime>06/01/2016 15:16:30</publishTime>
     </File>
     <File Include="Views/ClaimStatesData/Index.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/06/2016 17:52:26</publishTime>
     </File>
     <File Include="Views/ClientInfo/ExpireToken.cshtml">
       <publishTime>06/01/2016 15:16:30</publishTime>
@@ -412,10 +448,10 @@
       <publishTime>06/01/2016 15:16:30</publishTime>
     </File>
     <File Include="Views/ServicesData/Index.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/06/2016 17:55:34</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>06/01/2016 15:16:30</publishTime>
+      <publishTime>06/06/2016 17:02:55</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>06/01/2016 15:16:30</publishTime>

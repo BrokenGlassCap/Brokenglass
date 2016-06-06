@@ -1,11 +1,116 @@
-﻿
+﻿@model IEnumerable<BrokenGlassDomain.Claim>
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section HeadLinks{
+        <link type="text/css" rel="stylesheet" href="~/Content/jsgrid.min.css" />
+        <link type="text/css" rel="stylesheet" href="~/Content/jsgrid-theme.min.css" />
+    }
+
 <div class="container">
-    <h2>Index</h2>
+    <h3 class="text-muted">Заявки</h3>
+    <div id="jsGrid"></div>
 </div>
+
+@section Scripts{
+        <script type="text/javascript" src="~/scripts/jsgrid.min.js"></script>
+        <script type="text/javascript" src="~/scripts/dateFormat.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+    });
+    $(function () {
+
+        var claimStates = JSON.parse('@Html.Raw(ViewBag.JsonStates)');
+        var services = JSON.parse('@Html.Raw(ViewBag.JsonServices)');
+        $("#jsGrid").jsGrid({
+            width: "100%",
+
+            filtering: true,
+            inserting: false,
+            editing: false,
+            sorting: true,
+            paging: true,
+            autoload: true,
+
+            pageSize: 15,
+            pageButtonCount: 5,
+
+            //deleteConfirm: "Do you really want to delete the client?",
+            controller: {
+                loadData: function (filter) {
+                    return $.ajax({
+                        url: "ClaimData/GetClaim",
+                        type: "GET",
+                        data: filter,
+                        dataType: "json"
+                    });
+                },
+                deleteItem: function (item) {
+                    return $.ajax({
+                        url: "ClaimData/DeleteClaim",
+                        type: "POST",
+                        data: {
+                            id: item.Id
+                        },
+                    });
+                },
+                updateItem: function (item) {
+                    //return $.ajax({
+                    //    type: "PUT",
+                    //    url: "/api/data/" + item.ID,
+                    //    data: item,
+                    //    dataType: "json"
+                    //});
+                    alert(item.Id);
+                }
+            },
+
+            fields: [
+                 {
+                     name: "DateCreate", type: "date",
+                     itemTemplate: function (item) {
+                         if (item != null) {
+                             return dateFormat(item, 'dd/mm/yyyy');
+                         }
+                     },
+                     width: 20,
+                     title: "Дата создания"
+                 },
+                { name: "Id", type: "number", width: 10, title: "Номер заявки" },
+                { name: "StateName", type: "select", items: claimStates, valueField: "StateName", textField: "StateName", width: 20, title: "Статус", align: "right" },
+                { name: "ServiceName", type: "select", width: 30, title: "Сервис", items: services, valueField: "Name", textField: "Name", align: "right" },
+                { name: "OsbCode", type: "number", width: 30, title: "Код ОСБ", align: "right" },
+                { name: "AdressName", type: "text", width: 30, title: "Адрес", align: "right" },
+                {
+                    type: "control", width: 10, itemTemplate: function (value, item) {
+                        return this._createGridButton("jsgrid-button jsgrid-edit-button", "Edit", function (grid) {
+                            window.location.href = '@Url.Action("Edit", "ClaimData")'+ '/' + item.Id;
+                        });
+                    },
+                },
+                {
+                    type: "control", width: 10, deleteButton: true, editButton: false,headerTemplate: function() {},filterTemplate: function() {},
+                }
+
+            ]
+        });
+
+
+    //        fields: [
+    //            { name: "Id", type: "number", width: 50, filtering: false },
+    //            { name: "Name", type: "text", width: 150 },
+    //            { name: "Age", type: "number", width: 50, filtering: false },
+    //            { name: "Address", type: "text", width: 200 },
+    //            { name: "Country", type: "select", items: countries, valueField: "Id", textField: "Name" },
+    //            { name: "Married", type: "checkbox", title: "Is Married", sorting: false },
+    //            { type: "control" }
+    //        ]
+    //    });
+
+    });
+</script>
+    }
 
 

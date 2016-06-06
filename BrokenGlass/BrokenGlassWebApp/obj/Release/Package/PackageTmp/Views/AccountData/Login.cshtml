@@ -1,0 +1,41 @@
+﻿@model BrokenGlassDomain.Entities.UserLoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            <h3  class="text-muted">Login</h3>
+            <div class="col-md-4 col-sm-12 col-md-offset-4">
+             
+                <div class="col-md-12 margin-top-20-px">
+                    <span class="text-danger">@Html.ValidationMessage("Summary")</span>
+                </div>
+                <div class="col-md-12 margin-top-20-px">
+                    @*<span class="text-danger">@Html.ValidationSummary()</span>*@
+                   
+                    @Html.Label("Login",new {@class = "text-muted" })
+                </div>
+                <div class="col-md-12 margin-top-5-px">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Login" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+                <div class="col-md-12 margin-top-20-px">
+                    @Html.Label("Password", new { @class = "text-muted" })
+                </div>
+                <div class="col-md-12 margin-top-5-px">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                <div class="col-md-12 margin-top-20-px col-md-offset-4">
+                        <button class="btn btn btn-default" type="submit">Login</button>
+                </div>
+                
+            </div>
+            
+        }
+    </div>
+</div>

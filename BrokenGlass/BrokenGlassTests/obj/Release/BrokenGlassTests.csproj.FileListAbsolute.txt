@@ -85,3 +85,5 @@ C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Release\ru\Sy
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\obj\Release\BrokenGlassTests.csprojResolveAssemblyReference.cache
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\obj\Release\BrokenGlassTests.dll
 C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\obj\Release\BrokenGlassTests.pdb
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Release\Microsoft.Owin.Host.SystemWeb.dll
+C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassTests\bin\Release\Microsoft.Owin.Host.SystemWeb.xml
