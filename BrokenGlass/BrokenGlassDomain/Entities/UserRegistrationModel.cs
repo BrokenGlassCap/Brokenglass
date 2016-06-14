@@ -11,6 +11,7 @@ namespace BrokenGlassDomain.Entities
     {
         [RegularExpression(@"^\w+([+-.']\w+)*@sberbank\.ru",ErrorMessage ="Введен неверный Email")]
         public string Email { get; set; }
+
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\S]{8,}$",ErrorMessage ="Неверный формат пароля.")]
         [DataType(DataType.Password)]
         [StringLength(20,MinimumLength = 8, ErrorMessage ="Пароль должен быть от 8 до 20 символов.")]

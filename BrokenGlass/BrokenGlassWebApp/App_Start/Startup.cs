@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using BrokenGlassWebApp.Infostracture;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartup(typeof(BrokenGlassWebApp.App_Start.Startup))]
 namespace BrokenGlassWebApp.App_Start
@@ -24,6 +25,8 @@ namespace BrokenGlassWebApp.App_Start
             DependencyResolver.SetResolver(new NinjectDependencyResolver());
             HttpConfiguration config = new HttpConfiguration();
             ConfigureOAuth(app);
+            //config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
@@ -39,7 +42,13 @@ namespace BrokenGlassWebApp.App_Start
             };
             // Token Generation
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            app.UseCookieAuthentication(new Microsoft.Owin.Security.Cookies.CookieAuthenticationOptions()
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/AccountData/Login")
+            });
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+           
 
         }
     //public class Global : HttpApplication

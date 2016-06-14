@@ -7,6 +7,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    @RenderSection("HeadLinks",false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,9 +22,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    <li><a>ЗАЯВКИ</a></li>
-                    <li><a>СПРАВОЧНИКИ</a></li>
-                    <li><a>ВЫЙТИ</a></li>
+                    <li><a href="@Url.Action("Index","ClaimData")">ЗАЯВКИ</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="DictionaryLink">СПРАВОЧНИКИ</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","ServicesData")">СЕРВИСЫ</a></li>
+                            <li><a href="@Url.Action("Index","ClaimStatesData")">СТАТУСЫ</a></li>
+                            <li><a href="@Url.Action("Index","AdressesData")">АДРЕСА</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Logout","AccountData")">ВЫЙТИ</a></li>
                 </ul>
             </div>
         </div>
@@ -44,5 +52,6 @@
     
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts",false)
 </body>
 </html>

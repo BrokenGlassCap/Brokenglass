@@ -55,7 +55,7 @@ namespace BrokenGlassWebApp.Controllers.api
 
         public async Task<IEnumerable<ClaimState>> Get(DateTime lastUpdateDate)
         {
-            var claimStates = await db.ClaimStateRepository.FindAllAsync(f => f.UpdateAt >= lastUpdateDate);
+            var claimStates = await db.ClaimStateRepository.FindAllAsync(f => f.UpdateAt > lastUpdateDate);
 
             if (claimStates.Count() == 0)
             {

@@ -10,7 +10,7 @@ using BrokenGlassDomain;
 
 namespace BrokenGlassWebApp.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "ADMIN_BG")]
     public class ServicesDataController : Controller
     {
         private BROKEN_GLASSEntities db = new BROKEN_GLASSEntities();

@@ -144,6 +144,25 @@ namespace BrokenGlassDomain.Entities
             return strBuilder.ToString();
         }
 
+        public async Task<bool> CheckUserAccess(UserLoginModel model)
+        {
+            var userIdentity = await FindIdentityUserAsync(model.Email);
+            return await m_userManager.CheckPasswordAsync(userIdentity, model.Password);   
+        }
+
+        public async Task<IEnumerable<string>> GetUsersRoles(string email)
+        {
+            var userIdentity = await FindIdentityUserAsync(email);
+            if (userIdentity == null)
+            {
+                throw new Exception("User is not exist with specify Email");
+            }
+
+           return await m_userManager.GetRolesAsync(userIdentity.Id);
+
+        }
+
+
         public void Dispose()
         {
             m_db.Dispose();
