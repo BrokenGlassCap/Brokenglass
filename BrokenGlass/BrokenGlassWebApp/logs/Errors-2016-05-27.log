@@ -1,0 +1,81 @@
+2016-05-27 08:41:33.6715 ERROR A object of IdentityUser type was not create.    в BrokenGlassDomain.Entities.UserFactory.<RegistrationAsync>d__10.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 66
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<Registration>d__0.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 23
+2016-05-27 08:42:17.0180 ERROR A object of IdentityUser type was not create.    в BrokenGlassDomain.Entities.UserFactory.<RegistrationAsync>d__10.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 66
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<Registration>d__0.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 23
+2016-05-27 09:25:41.2009 ERROR A object of IdentityUser type was not create.
+Name anton123@sberbank.ru is already taken.
+    в BrokenGlassDomain.Entities.UserFactory.<RegistrationAsync>d__10.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 72
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<Registration>d__0.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 23
+2016-05-27 17:01:25.3239 ERROR A object of IdentityUser type was not create.
+Name anton123test@sberbank.ru is already taken.
+    в BrokenGlassDomain.Entities.UserFactory.<RegistrationAsync>d__10.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 69
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<Registration>d__0.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 28
+2016-05-27 17:04:40.7131 ERROR Ссылка на объект не указывает на экземпляр объекта.    в BrokenGlassDomain.Entities.UserFactory.<GenerateEmailConfirmationTokenAsync>d__14.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 103
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<Registration>d__0.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 31
+2016-05-27 17:08:33.8404 ERROR Ссылка на объект не указывает на экземпляр объекта.    в BrokenGlassDomain.Entities.UserFactory.<GenerateEmailConfirmationTokenAsync>d__14.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 103
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<Registration>d__0.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 31
+2016-05-27 17:13:28.2083 ERROR A object of IdentityUser type was not create.
+Name muzychenkoaa@gmail.com is already taken.
+    в BrokenGlassDomain.Entities.UserFactory.<RegistrationAsync>d__10.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 70
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<Registration>d__0.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 28
+2016-05-27 17:13:57.2359 ERROR При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.<SaveAsync>d__21.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 104
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassDomain.Entities.UserFactory.<RegistrationAsync>d__10.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 81
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<Registration>d__0.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 28
+2016-05-27 17:20:06.7641 ERROR В момент подтверждения аккаунта  c ID 822e7981-012f-4329-8020-7bc5182e9a17 на сервере возникло исключение: No IUserTokenProvider is registered.    в Microsoft.AspNet.Identity.UserManager`2.<VerifyUserTokenAsync>d__f9.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()
+   в Microsoft.AspNet.Identity.UserManager`2.<ConfirmEmailAsync>d__c5.MoveNext()
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassDomain.Entities.UserFactory.<ConfirmEmailAsync>d__15.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\Entities\UserFactory.cs:строка 116
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassWebApp.Controllers.api.AccountController.<ConfirmEmail>d__1.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\AccountController.cs:строка 57
+2016-05-27 17:23:37.3461 ERROR В момент подтверждения аккаунта  c ID 822e7981-012f-4329-8020-7bc5182e9a17 произошли ошибки на серер авторизации Web Api: Invalid token.
+

@@ -1,0 +1,27 @@
+2016-05-31 08:22:47.7771 TRACE Claims/POST: Claim didnt created: При обновлении записей возникла ошибка. Дополнительные сведения приведены во внутреннем исключении.    в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   в BrokenGlassDomain.DataLayer.UnitOfWork.<SaveAsync>d__27.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassDomain\DataLayer\UnitOfWork.cs:строка 130
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 108
+2016-05-31 08:53:34.1857 TRACE Claims/POST: Claim didnt created: Ссылка на объект не указывает на экземпляр объекта.    в BrokenGlassWebApp.Controllers.api.ClaimsController.<SetClaimUserId>d__8.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 133
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 100
+2016-05-31 08:54:14.9780 TRACE Claims/POST: Claim didnt created: Ссылка на объект не указывает на экземпляр объекта.    в BrokenGlassWebApp.Controllers.api.ClaimsController.<SetClaimUserId>d__8.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 133
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 100
+2016-05-31 08:55:33.7055 TRACE Claims/POST: Claim didnt created: Ссылка на объект не указывает на экземпляр объекта.    в BrokenGlassWebApp.Controllers.api.ClaimsController.<SetClaimUserId>d__8.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 133
+--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---
+   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   в System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   в BrokenGlassWebApp.Controllers.api.ClaimsController.<PostClaim>d__6.MoveNext() в C:\Development\GitRepoBrokenGlass\BrokenGlass\BrokenGlassWebApp\Controllers\api\ClaimsController.cs:строка 100
