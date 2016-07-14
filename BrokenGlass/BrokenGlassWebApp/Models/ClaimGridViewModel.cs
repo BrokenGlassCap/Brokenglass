@@ -13,6 +13,7 @@ namespace BrokenGlassWebApp.Models
         public string ServiceName { get; set; }
         public string AdressName { get; set; }
         public int OsbCode { get; set; }
+        public string UserEmail { get; set; }
 
     }
 }

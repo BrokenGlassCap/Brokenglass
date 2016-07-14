@@ -15,8 +15,8 @@ namespace BrokenGlassWebApp.Controllers
         {
             return View();
         }
-
-        public FileResult getIOSPackage()
+        //@Deprecate
+        /*public FileResult getIOSPackage()
         {
             string fileName = "ios-broken-glass.ipa";
             string path = getPathPackage(fileName);
@@ -33,6 +33,6 @@ namespace BrokenGlassWebApp.Controllers
         private string getPathPackage(string namePackage)
         {
             return Path.Combine(HttpContext.Server.MapPath("~/Repository"), namePackage);
-        }
+        }*/
     }
 }
