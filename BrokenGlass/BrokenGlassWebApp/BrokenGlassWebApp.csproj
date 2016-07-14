@@ -327,6 +327,7 @@
     <Compile Include="Controllers\ClaimStatesDataController.cs" />
     <Compile Include="Controllers\ClientInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RepositoryController.cs" />
     <Compile Include="Controllers\ServicesDataController.cs" />
     <Compile Include="Infostracture\EmailService.cs" />
     <Compile Include="Infostracture\Logger.cs" />
@@ -373,7 +374,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Repository\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Repository\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrokenGlassDomain\BrokenGlassDomain.csproj">

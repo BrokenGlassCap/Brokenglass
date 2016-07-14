@@ -17,6 +17,49 @@
         <script type="text/javascript" src="~/scripts/jsgrid.min.js"></script>
         <script type="text/javascript" src="~/scripts/dateFormat.js"></script>
 <script type="text/javascript">
+    function restoreGridFilter(filter) {
+        if (isWasEdit()) {
+            FillFilterFields();
+            filter = getFilter();
+        }
+        RegEventEditHappens('false');
+        return filter;
+    }
+
+    function FillFilterFields() {
+        var storagefilter = getFilter();
+        var fields = $("#jsGrid").jsGrid("option", "fields");
+        if (storagefilter.Id !== 0) fields[1].filterControl.val(storagefilter.Id);
+        fields[2].filterControl.val(storagefilter.StateName);
+        fields[3].filterControl.val(storagefilter.ServiceName);
+        if (storagefilter.OsbCode !== 0) fields[4].filterControl.val(storagefilter.OsbCode);
+        fields[5].filterControl.val(storagefilter.AdressName);
+        fields[6].filterControl.val(storagefilter.UserEmail);
+    }
+
+    function saveFilter(filter) {
+        sessionStorage.setItem('gridFilter', JSON.stringify(filter));
+    }
+    function RegEventEditHappens(result) {
+        sessionStorage.setItem('wasEdit', result);
+    }
+    function isWasEdit() {
+        return sessionStorage.getItem('wasEdit') == 'true';
+    }
+    function getFilter() {
+        var item = sessionStorage.getItem('gridFilter');
+        return JSON.parse(item);
+    }
+
+    
+    function isFilterEmpty(filter){
+        if(filter.AdressName === "" && filter.Id === 0 && 
+           filter.OsbCode === 0 && filter.ServiceName === "" &&
+           filter.StateName === "" && filter.UserEmail === "") {
+           return true;
+        }
+        return false;
+    }
     $(function () {
 
     });
@@ -40,10 +83,11 @@
             //deleteConfirm: "Do you really want to delete the client?",
             controller: {
                 loadData: function (filter) {
+                    
                     return $.ajax({
                         url: "ClaimData/GetClaim",
                         type: "GET",
-                        data: filter,
+                        data: restoreGridFilter(filter),
                         dataType: "json"
                     });
                 },
@@ -57,13 +101,6 @@
                     });
                 },
                 updateItem: function (item) {
-                    //return $.ajax({
-                    //    type: "PUT",
-                    //    url: "/api/data/" + item.ID,
-                    //    data: item,
-                    //    dataType: "json"
-                    //});
-                    alert(item.Id);
                 }
             },
 
@@ -83,9 +120,13 @@
                 { name: "ServiceName", type: "select", width: 30, title: "Сервис", items: services, valueField: "Name", textField: "Name", align: "right" },
                 { name: "OsbCode", type: "number", width: 30, title: "Код ОСБ", align: "right" },
                 { name: "AdressName", type: "text", width: 30, title: "Адрес", align: "right" },
+                { name: "UserEmail", type: "text", width: 40, title: "Обратился", align: "right" },
                 {
                     type: "control", width: 10, itemTemplate: function (value, item) {
                         return this._createGridButton("jsgrid-button jsgrid-edit-button", "Edit", function (grid) {
+                            var filterForSaving = $('#jsGrid').jsGrid("getFilter");
+                            saveFilter(filterForSaving);
+                            RegEventEditHappens('true');
                             window.location.href = '@Url.Action("Edit", "ClaimData")'+ '/' + item.Id;
                         });
                     },
@@ -96,18 +137,6 @@
 
             ]
         });
-
-
-    //        fields: [
-    //            { name: "Id", type: "number", width: 50, filtering: false },
-    //            { name: "Name", type: "text", width: 150 },
-    //            { name: "Age", type: "number", width: 50, filtering: false },
-    //            { name: "Address", type: "text", width: 200 },
-    //            { name: "Country", type: "select", items: countries, valueField: "Id", textField: "Name" },
-    //            { name: "Married", type: "checkbox", title: "Is Married", sorting: false },
-    //            { type: "control" }
-    //        ]
-    //    });
 
     });
 </script>

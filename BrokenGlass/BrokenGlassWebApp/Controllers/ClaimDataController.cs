@@ -50,6 +50,7 @@ namespace BrokenGlassWebApp.Controllers
                         (string.IsNullOrEmpty(filterObject.StateName) || c.ClaimState.Name.Contains(filterObject.StateName)) &&
                         (string.IsNullOrEmpty(filterObject.ServiceName) || c.Service.Name.Contains(filterObject.ServiceName)) &&
                         (string.IsNullOrEmpty(filterObject.AdressName) || c.Adress.AdressName.Contains(filterObject.AdressName)) &&
+                        (string.IsNullOrEmpty(filterObject.UserEmail) || c.User.Email.Contains(filterObject.UserEmail)) &&
                         (filterObject.OsbCode == 0 || c.Adress.OsbCode == filterObject.OsbCode)
                         select new ClaimGridViewModel
                         {
@@ -58,8 +59,8 @@ namespace BrokenGlassWebApp.Controllers
                             StateName = c.ClaimState.Name,
                             ServiceName = c.Service.Name,
                             AdressName = c.Adress.AdressName,
-                            OsbCode = c.Adress.OsbCode
-                            
+                            OsbCode = c.Adress.OsbCode,
+                            UserEmail = c.User.Email
                         };
             return JsonConvert.SerializeObject(model, Formatting.None, new JsonSerializerSettings()
             {
@@ -77,7 +78,8 @@ namespace BrokenGlassWebApp.Controllers
                 StateName = filter.Get("StateName"),
                 ServiceName = filter.Get("ServiceName"),
                 AdressName = filter.Get("AdressName"),
-                OsbCode = string.IsNullOrEmpty(filter.Get("OsbCode")) ? 0 : int.Parse(filter.Get("OsbCode"))
+                OsbCode = string.IsNullOrEmpty(filter.Get("OsbCode")) ? 0 : int.Parse(filter.Get("OsbCode")),
+                UserEmail = filter.Get("UserEmail")
             };
         }
 
