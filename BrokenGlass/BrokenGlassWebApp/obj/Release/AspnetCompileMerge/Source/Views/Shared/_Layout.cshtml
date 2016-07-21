@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broken glass</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    @RenderSection("HeadLinks",false)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("BROKEN GLASS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand logo-text-color" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="@Url.Action("Index","ClaimData")">ЗАЯВКИ</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="DictionaryLink">СПРАВОЧНИКИ</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","ServicesData")">СЕРВИСЫ</a></li>
+                            <li><a href="@Url.Action("Index","ClaimStatesData")">СТАТУСЫ</a></li>
+                            <li><a href="@Url.Action("Index","AdressesData")">АДРЕСА</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Logout","AccountData")">ВЫЙТИ</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid body-content">
+        @RenderBody()
+    </div>
+
+        <footer>
+            <div class="container">
+                <hr />
+                <p>&copy; @DateTime.Now.Year - SBRF</p>
+            </div>
+
+        </footer>
+
+    
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts",false)
+</body>
+</html>
