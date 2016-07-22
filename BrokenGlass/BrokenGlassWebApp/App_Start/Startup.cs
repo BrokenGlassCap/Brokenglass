@@ -30,6 +30,7 @@ namespace BrokenGlassWebApp.App_Start
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
+            System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier = System.Security.Claims.ClaimTypes.Email;
         }
         public void ConfigureOAuth(IAppBuilder app)
         {

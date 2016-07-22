@@ -85,7 +85,7 @@
       <publishTime>06/15/2016 15:11:03</publishTime>
     </File>
     <File Include="bin/BrokenGlassWebApp.dll">
-      <publishTime>07/14/2016 16:39:04</publishTime>
+      <publishTime>07/21/2016 11:19:39</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/14/2016 11:05:05</publishTime>
@@ -337,7 +337,7 @@
       <publishTime>06/14/2016 11:05:05</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/14/2016 16:39:08</publishTime>
+      <publishTime>07/21/2016 11:19:42</publishTime>
     </File>
     <File Include="scripts/ai.0.15.0-build58334.js">
       <publishTime>05/17/2016 13:11:19</publishTime>
